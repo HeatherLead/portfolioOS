@@ -57,6 +57,11 @@ const Projects = () => {
       >
         <SwiperSlide>
           <div className=" w-full h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100 rounded-2xl p-5 text-white">
+            <div className="bar flex gap-3">
+              <div className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"></div>
+              <div className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF931E]"></div>
+              <div className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"></div>
+            </div>
             <div className=" grid grid-cols-2 grid-rows-1 w-full h-1/2 gap-5">
               <div className=" col-span-1 self-center ">
                 <h1 className=" text-6xl font-bold mb-10">PROJECT1</h1>

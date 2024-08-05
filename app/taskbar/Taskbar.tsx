@@ -8,11 +8,17 @@ import mail from "./assets/Message.svg";
 import Image from "next/image";
 import { State } from "../page";
 interface TaskbarProps {
+  currentState: State;
+  handleIconClick: (state: State) => void;
   setCurrentState: (state: State) => void;
 }
-const Taskbar: React.FC<TaskbarProps> = ({ setCurrentState }) => {
+const Taskbar = ({
+  setCurrentState,
+  currentState,
+  handleIconClick,
+}: TaskbarProps) => {
   return (
-    <div className=" flex w-1/2 justify-evenly items-center p-5 border border-b-0 rounded-t-xl fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30  border-gray-100">
+    <div className=" flex w-1/2 justify-evenly items-center p-4 border border-b-0 rounded-t-xl fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30  border-gray-100">
       <Image
         width={36}
         height={36}
@@ -21,6 +27,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ setCurrentState }) => {
         alt=""
         onClick={() => {
           setCurrentState(State.Home);
+          handleIconClick(State.Home);
         }}
       />
 
@@ -32,6 +39,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ setCurrentState }) => {
         alt=""
         onClick={() => {
           setCurrentState(State.About);
+          handleIconClick(State.About);
         }}
       />
 
@@ -43,6 +51,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ setCurrentState }) => {
         alt=""
         onClick={() => {
           setCurrentState(State.Projects);
+          handleIconClick(State.Projects);
         }}
       />
 
@@ -54,6 +63,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ setCurrentState }) => {
         alt=""
         onClick={() => {
           setCurrentState(State.Contact);
+          handleIconClick(State.Contact);
         }}
       />
 
@@ -65,6 +75,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ setCurrentState }) => {
         alt=""
         onClick={() => {
           setCurrentState(State.Games);
+          handleIconClick(State.Games);
         }}
       />
 
@@ -76,6 +87,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ setCurrentState }) => {
         alt=""
         onClick={() => {
           setCurrentState(State.Mail);
+          handleIconClick(State.Mail);
         }}
       />
     </div>

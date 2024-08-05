@@ -5,6 +5,11 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import face from "../assets/face.svg";
 import { FaInstagram, FaGithub, FaYoutube, FaLinkedinIn } from "react-icons/fa";
+import { Sacramento } from "next/font/google";
+const sacramento = Sacramento({
+  weight: "400",
+  subsets: ["latin"],
+});
 const Contact = () => {
   const container = useRef(null);
 
@@ -46,33 +51,51 @@ const Contact = () => {
           </div>
         </div>
         <div className=" col-span-2 bg-white rounded-r-xl grid grid-rows-4">
-          <div className=" flex  justify-center items-center gap-14 row-span-1">
-            <img className=" w-20 aspect-square" src={face.src} alt="" />
-            <h1 className=" text-5xl">Ayush Bangar</h1>
+          <div className=" flex  justify-center items-end gap-12 row-span-1">
+            <img className=" w-24 aspect-square" src={face.src} alt="" />
+            <h1 className={`text-5xl ${sacramento.className}`}>Ayush Bangar</h1>
           </div>
           <div className=" flex justify-center items-center gap-14 row-span-1 ">
-            <div className=" w-12 aspect-square rounded-full bg-blue-500  flex justify-center items-center">
+            <a
+              href="https://linkedin.com/in/ayush-bangar-474608297"
+              className=" w-12 aspect-square rounded-full bg-blue-500  flex justify-center items-center cursor-pointer"
+            >
               <FaLinkedinIn className=" text-white text-2xl" />
-            </div>
+            </a>
 
-            <div className=" w-12 aspect-square rounded-full bg-blue-500  flex justify-center items-center">
+            <a
+              href="https://github.com/HeatherLead"
+              className=" w-12 aspect-square rounded-full bg-blue-500  flex justify-center items-center cursor-pointer"
+            >
               <FaGithub className=" text-white text-2xl" />
-            </div>
+            </a>
 
-            <div className=" w-12 aspect-square rounded-full bg-red-500  flex justify-center items-center">
+            <a
+              href="https://youtube.com/@ayushbangar4916"
+              className=" w-12 aspect-square rounded-full bg-red-500  flex justify-center items-center cursor-pointer"
+            >
               <FaYoutube className=" text-white text-2xl" />
-            </div>
+            </a>
 
-            <div className=" w-12 aspect-square rounded-full bg-red-500  flex justify-center items-center">
+            <a
+              href="https://www.instagram.com/ayushbangar25/"
+              className=" w-12 aspect-square rounded-full bg-red-500  flex justify-center items-center cursor-pointer"
+            >
               <FaInstagram className=" text-white text-2xl" />
-            </div>
+            </a>
           </div>
-          <div className=" row-span-2">
+          <div className=" row-span-2 mt-10">
             <hr />
             <div className="grid w-full grid-cols-4 mt-1 mb-1">
               <div></div>
               <h1 className="col-start-2">Email</h1>
               <p className="col-start-3 col-span-2">Ayushbangar04@gmail.com</p>
+            </div>
+            <hr />
+            <div className="grid w-full grid-cols-4 mt-1 mb-1">
+              <div></div>
+              <h1 className="col-start-2">Work</h1>
+              <p className="col-start-3 col-span-2">Full stack Developer</p>
             </div>
             <hr />
             <div className="grid w-full grid-cols-4 mt-1 mb-1">
@@ -83,14 +106,8 @@ const Contact = () => {
             <hr />
             <div className="grid w-full grid-cols-4 mt-1 mb-1">
               <div></div>
-              <h1 className="col-start-2">Email</h1>
-              <p className="col-start-3 col-span-2">Ayushbangar04@gmail.com</p>
-            </div>
-            <hr />
-            <div className="grid w-full grid-cols-4 mt-1 mb-1">
-              <div></div>
-              <h1 className="col-start-2">Birthday</h1>
-              <p className="col-start-3 col-span-2">5-6-2004</p>
+              <h1 className="col-start-2">Location</h1>
+              <p className="col-start-3 col-span-2">Mumbai</p>
             </div>
           </div>
         </div>
