@@ -1,53 +1,64 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import face from "../assets/face.svg";
 import { FaInstagram, FaGithub, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import { Sacramento } from "next/font/google";
+import { State } from "../page";
+import { Screen } from "./mail";
+import { useBaseAnimations } from "@/hooks/useBaseAnimations";
+import useDragger from "@/hooks/useDragger";
 const sacramento = Sacramento({
   weight: "400",
   subsets: ["latin"],
 });
-const Contact = () => {
-  const container = useRef(null);
+interface ContactProps {
+  handleIconClick: (state: State) => void;
+}
+const Contact = ({ handleIconClick }: ContactProps) => {
+  const t1Ref = useRef<GSAPTimeline | null>(null);
+  const [screenWidth, setScreenWidth] = useState(Screen.min);
 
-  useGSAP(() => {
-    const t1 = gsap.timeline();
-    gsap.set(container.current, {
-      bottom: 0,
-      width: 9,
-      height: 9,
-      transformOrigin: "bottom",
-    });
-    t1.to(container.current, {
-      bottom: "15%",
-      width: "20%",
-      height: "60%",
-      ease: "power2.in",
-    }).to(
-      container.current,
-      {
-        position: "static",
-        width: "80%",
-        height: "90%",
-        ease: "power2.out",
-      },
-      "-=.3"
-    );
+  useBaseAnimations({
+    id: "contact",
+    screenWidth,
+    t1Ref,
   });
+
+  const closeWindow = () => {
+    if (t1Ref.current) {
+      t1Ref.current.reverse().then(() => {
+        handleIconClick(State.Contact);
+      });
+    }
+  };
+  useDragger("contact");
   return (
-    <div className="  w-screen h-screen  pb-28 relative flex justify-center items-center overflow-hidden">
+    <div className="  w-screen h-screen  relative flex justify-center items-end overflow-hidden">
       <div
-        ref={container}
-        className=" w-[70%] h-[70%]  rounded-xl absolute grid  grid-cols-3"
+        id="contact"
+        className=" w-[70%] h-[70%]  rounded-xl  grid  grid-cols-3 absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div className=" col-span-1  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border-r rounded-l-xl p-5 ">
-          <div className="bar flex gap-3">
-            <div className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"></div>
-            <div className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF931E]"></div>
-            <div className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"></div>
+          <div className="bar flex gap-3 p-5">
+            <div
+              onClick={closeWindow}
+              className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
+            ></div>
+            <div
+              onClick={() => {
+                setScreenWidth(Screen.min);
+              }}
+              className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF931E]"
+            ></div>
+            <div
+              onClick={() => {
+                setScreenWidth(Screen.max);
+              }}
+              className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"
+            ></div>
           </div>
         </div>
         <div className=" col-span-2 bg-white rounded-r-xl grid grid-rows-4">

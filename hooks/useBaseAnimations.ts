@@ -44,8 +44,8 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
                 containerRef.current,
                 {
                     opacity: 100,
-                    width: "70%",
-                    height: "80%",
+                    width: id === "games" ?"80%" :"70%",
+                    height:"80%",
                     ease: "power2.out",
                 },
                 "-=.3"
@@ -72,7 +72,7 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
             });
         } else if (screenWidth === Screen.min) {
             t2.to(containerRef.current, {
-                width: "70%",
+                width: id === "games" ?"80%" :"70%",
                 height: "80%",
                 ease: "power3.in",
                 left: "50%",

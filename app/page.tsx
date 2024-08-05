@@ -30,13 +30,13 @@ export default function page() {
   const renderComponent = (state: State) => {
     switch (state) {
       case State.About:
-        return <About key={state} />;
+        return <About handleIconClick={handleIconClick} key={state} />;
       case State.Projects:
         return <Projects key={state} />;
       case State.Contact:
-        return <Contact key={state} />;
+        return <Contact handleIconClick={handleIconClick} key={state} />;
       case State.Games:
-        return <Games key={state} />;
+        return <Games handleIconClick={handleIconClick} key={state} />;
       case State.Mail:
         return <Mail handleIconClick={handleIconClick} key={state} />;
       default:

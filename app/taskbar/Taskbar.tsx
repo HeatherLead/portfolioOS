@@ -12,7 +12,7 @@ interface TaskbarProps {
 }
 const Taskbar = ({ handleIconClick }: TaskbarProps) => {
   return (
-    <div className=" flex w-1/2 justify-evenly items-center p-3 border border-b-0 rounded-t-xl fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30  border-gray-100">
+    <div className=" flex w-1/2 justify-evenly items-center p-4 border border-b-0 rounded-t-xl fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30  border-gray-100">
       {/* <Image
         width={32}
         height={32}
