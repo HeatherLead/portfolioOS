@@ -21,9 +21,10 @@ export default function About() {
   useGSAP(() => {
     const t1 = gsap.timeline();
     gsap.set(container.current, {
+      opacity: 0,
       bottom: 0,
-      width: 9,
-      height: 9,
+      width: 2,
+      height: 2,
       transformOrigin: "bottom",
     });
     t1.to(container.current, {
@@ -34,19 +35,19 @@ export default function About() {
     }).to(
       container.current,
       {
-        position: "static",
+        opacity: 100,
         width: "70%",
-        height: "90%",
+        height: "80%",
         ease: "power2.out",
       },
       "-=.3"
     );
   });
   return (
-    <div className="w-screen h-screen p-0 m-0 pb-24 relative flex justify-center items-center">
+    <div className="w-screen h-screen p-0 m-0  relative flex justify-center items-center">
       <div
         ref={container}
-        className="h-full w-full bg-gray-400 grid grid-cols-8 grid-rows-5 gap-5  bg-clip-padding absolute backdrop-filter backdrop-blur-md bg-opacity-10 border p-5 border-gray-100 rounded-xl text-white"
+        className="h-full w-full grid grid-cols-8 grid-rows-5 gap-5 absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border p-5 border-gray-100 rounded-xl text-white m-0"
       >
         <div className=" col-span-2 row-span-2 flex p-5 justify-center items-center border rounded ">
           <Image

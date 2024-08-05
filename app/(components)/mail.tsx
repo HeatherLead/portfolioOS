@@ -12,17 +12,17 @@ export enum Screen {
   min,
 }
 interface MailProps {
-  animate: boolean;
-  setCurrentState: (state: State) => void;
+  handleIconClick: (state: State) => void;
 }
-const Mail = ({ animate, setCurrentState }: MailProps) => {
+const Mail = ({ handleIconClick }: MailProps) => {
+  const t1Ref = useRef<GSAPTimeline>();
   const container = useRef<HTMLDivElement>(null);
   const [screenWidth, setScreenWidth] = useState(Screen.min);
-  const [reverseAnimate, setReverseAnimate] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
 
   useGSAP(() => {
     const t1 = gsap.timeline();
+    t1Ref.current = t1;
     if (firstLoad) {
       gsap.set(container.current, {
         opacity: 0,
@@ -46,7 +46,6 @@ const Mail = ({ animate, setCurrentState }: MailProps) => {
         },
         "-=.3"
       );
-      t1.reversed(reverseAnimate);
       setFirstLoad(false);
     }
   });
@@ -74,6 +73,14 @@ const Mail = ({ animate, setCurrentState }: MailProps) => {
       });
     }
   }, [screenWidth]);
+
+  const closeWindow = () => {
+    if (t1Ref.current) {
+      t1Ref.current.reverse().then(() => {
+        handleIconClick(State.Mail);
+      });
+    }
+  };
   useDragger("box");
   return (
     <div className=" w-screen h-screen overflow-hidden m-0 p-0  flex justify-center items-center ">
@@ -85,9 +92,7 @@ const Mail = ({ animate, setCurrentState }: MailProps) => {
         <div className=" col-span-1 bg-transparent rounded-l-xl backdrop-blur-md p-3 ">
           <div className="bar flex gap-3 p-5">
             <div
-              onClick={() => {
-                setReverseAnimate(true);
-              }}
+              onClick={closeWindow}
               className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
             ></div>
             <div
