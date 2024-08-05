@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Screen } from "@/app/(components)/mail";
 import { useGSAP } from "@gsap/react";
@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 interface UseBaseAnimationsProps {
     id: string;
     screenWidth: Screen;
-    t1Ref: React.MutableRefObject<GSAPTimeline | null>;
+    t1Ref: MutableRefObject<GSAPTimeline | null>;
 }
 
 export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsProps) => {
@@ -22,9 +22,9 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
 
     useGSAP(() => {
         if (!containerRef.current) return;
-        
         const t1 = gsap.timeline();
-        t1Ref.current = t1;
+        
+        if (t1Ref.current === null) t1Ref.current = t1;
 
         if (firstLoad) {
             gsap.set(containerRef.current, {
@@ -53,12 +53,13 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
 
             setFirstLoad(false);
         }
-    }, [t1Ref]);
+    }, [firstLoad, t1Ref]);
 
     useGSAP(() => {
         if (!containerRef.current) return;
 
         const t2 = gsap.timeline();
+        if(firstLoad) return
 
         if (screenWidth === Screen.max) {
             t2.to(containerRef.current, {

@@ -7,6 +7,7 @@ import { Avatar, Box, Button, Card, Flex, Text } from "@radix-ui/themes";
 import { IoSend } from "react-icons/io5";
 import { State } from "../page";
 import useDragger from "@/hooks/useDragger";
+import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 export enum Screen {
   max,
   min,
@@ -15,64 +16,14 @@ interface MailProps {
   handleIconClick: (state: State) => void;
 }
 const Mail = ({ handleIconClick }: MailProps) => {
-  const t1Ref = useRef<GSAPTimeline>();
-  const container = useRef<HTMLDivElement>(null);
+  const t1Ref = useRef<GSAPTimeline | null>(null);
   const [screenWidth, setScreenWidth] = useState(Screen.min);
-  const [firstLoad, setFirstLoad] = useState(true);
 
-  useGSAP(() => {
-    const t1 = gsap.timeline();
-    t1Ref.current = t1;
-    if (firstLoad) {
-      gsap.set(container.current, {
-        opacity: 0,
-        bottom: 0,
-        width: 2,
-        height: 2,
-        transformOrigin: "bottom",
-      });
-      t1.to(container.current, {
-        bottom: "15%",
-        width: "20%",
-        height: "60%",
-        ease: "power2.in",
-      }).to(
-        container.current,
-        {
-          opacity: 100,
-          width: "70%",
-          height: "80%",
-          ease: "power2.out",
-        },
-        "-=.3"
-      );
-      setFirstLoad(false);
-    }
+  useBaseAnimations({
+    id: "box",
+    screenWidth,
+    t1Ref,
   });
-  useGSAP(() => {
-    const t2 = gsap.timeline();
-    if (firstLoad) return;
-    if (screenWidth === Screen.max) {
-      t2.to(container.current, {
-        width: "98%",
-        height: "96%",
-        ease: "power3.in",
-        left: "50%",
-        top: "42%",
-        transform: "translate(-50%, -50%)",
-      });
-    }
-    if (screenWidth === Screen.min) {
-      t2.to(container.current, {
-        width: "70%",
-        height: "80%",
-        ease: "power3.in",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%,-50%)",
-      });
-    }
-  }, [screenWidth]);
 
   const closeWindow = () => {
     if (t1Ref.current) {
@@ -81,11 +32,11 @@ const Mail = ({ handleIconClick }: MailProps) => {
       });
     }
   };
+
   useDragger("box");
   return (
     <div className=" w-screen h-screen overflow-hidden m-0 p-0  flex justify-center items-center ">
       <div
-        ref={container}
         id="box"
         className="rounded-xl border grid grid-cols-4 w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
