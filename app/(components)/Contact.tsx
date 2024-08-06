@@ -36,10 +36,10 @@ const Contact = ({ handleIconClick }: ContactProps) => {
   };
   useDragger("contact");
   return (
-    <div className="  w-screen h-screen  relative flex justify-center items-end overflow-hidden">
+    <div className=" w-screen h-screen p-0 m-0 overflow-hidden flex justify-center items-center">
       <div
         id="contact"
-        className=" w-[70%] h-[70%]  rounded-xl  grid  grid-cols-3 absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className=" z-20 w-[70%] h-[70%]  rounded-xl  grid  grid-cols-3 absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div className=" col-span-1  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border-r rounded-l-xl p-5 ">
           <div className="bar flex gap-3 p-5">

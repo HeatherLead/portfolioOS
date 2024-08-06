@@ -41,10 +41,10 @@ export default function About({ handleIconClick }: AboutProps) {
   useDragger("about");
 
   return (
-    <div className="w-screen h-screen p-0 m-0  relative flex justify-center items-center">
+    <div className="w-screen h-screen p-0 m-0 overflow-hidden  flex justify-center items-center">
       <div
         id="about"
-        className="h-full w-full grid grid-cols-8 grid-rows-10 gap-5 absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border p-5 border-gray-100 rounded-xl text-white m-0"
+        className=" z-10 h-full w-full grid grid-cols-8 grid-rows-10 gap-5 absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border p-5 border-gray-100 rounded-xl text-white m-0"
       >
         <div className="bar flex gap-3 col-span-2 row-span-1">
           <div
