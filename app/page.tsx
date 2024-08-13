@@ -58,7 +58,7 @@ export default function Page() {
           {renderComponent(state)}
         </div>
       ))}
-      <Taskbar handleIconClick={handleIconClick} />
+      <Taskbar activeStates={activeStates} handleIconClick={handleIconClick} />
     </div>
   );
 }

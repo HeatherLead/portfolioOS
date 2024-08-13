@@ -40,7 +40,7 @@ const Games = ({ handleIconClick }: GamesProps) => {
   return (
     <div className="w-screen h-screen p-0 m-0 overflow-hidden  flex justify-center items-center">
       <div
-        className=" z-30 grid grid-cols-10 grid-rows-6  gap-4 overflow-hidden w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-30 grid grid-cols-10 grid-rows-6  gap-4 overflow-hidden w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         id="games"
       >
         <div className="bar flex gap-3 p-2 col-span-1 row-span-1 ">

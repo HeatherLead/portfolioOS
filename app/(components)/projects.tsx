@@ -12,6 +12,7 @@ import { Space_Mono } from "next/font/google";
 import { Screen } from "./mail";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
+import Image from "next/image";
 const space_mono = Space_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -51,7 +52,7 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
     <div className=" w-screen h-screen overflow-hidden m-0 p-0  flex justify-center items-center ">
       <div
         id="project"
-        className=" z-20 rounded-xl border border-white  w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-20 rounded-xl border border-white  w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div className="bar flex gap-3 p-5">
           <div
@@ -91,7 +92,7 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
             <div className=" w-full h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100 rounded-2xl p-5 text-white">
               <div className=" grid grid-cols-2 grid-rows-1 w-full h-1/2 gap-5">
                 <div className=" col-span-1 self-center ">
-                  <h1 className=" text-5xl font-bold mb-10">PROJECT1</h1>
+                  <h1 className=" text-5xl font-bold mb-10">VEX</h1>
                   <div className=" flex gap-5">
                     <Button
                       color="gray"
@@ -106,12 +107,17 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
                     </Button>
                   </div>
                 </div>
-                <div className=" aspect-[4/3] col-span-1 bg-blue-400"></div>
+                <img
+                  src="/assets/vex.png"
+                  alt="vexImage"
+                  className="col-span-1 object-cover aspect-[4/3]"
+                />
               </div>
               <p className={` mt-3 ${space_mono.className}`}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
-                dolore tempora repellat dignissimos voluptatem. Atque dolorum
-                nobis eligendi fuga nesciunt!
+                Developed Vex, a collaborative online whiteboard application
+                inspired by Miro. Designed and implemented real-time
+                collaboration features, allowing multiple users to create, edit,
+                and share visual content seamlessly.
               </p>
             </div>
           </SwiperSlide>
