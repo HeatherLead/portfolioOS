@@ -1,9 +1,21 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { State } from "../page";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
 import { Screen } from "./mail";
+import { Space_Mono } from "next/font/google";
+import Image from "next/image";
+const space_mono = Space_Mono({
+  weight: "400",
+  subsets: ["latin"],
+});
+enum State {
+  About,
+  Contact,
+  Games,
+  Mail,
+  Projects,
+}
 interface GamesProps {
   handleIconClick: (state: State) => void;
 }
@@ -28,10 +40,10 @@ const Games = ({ handleIconClick }: GamesProps) => {
   return (
     <div className="w-screen h-screen p-0 m-0 overflow-hidden  flex justify-center items-center">
       <div
-        className=" z-30 grid grid-cols-10 grid-rows-6  gap-4 w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className=" z-30 grid grid-cols-10 grid-rows-6  gap-4 overflow-hidden w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         id="games"
       >
-        <div className="bar flex gap-3 p-2 col-span-1 row-span-1">
+        <div className="bar flex gap-3 p-2 col-span-1 row-span-1 ">
           <div
             onClick={closeWindow}
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
@@ -50,14 +62,65 @@ const Games = ({ handleIconClick }: GamesProps) => {
           ></div>
         </div>
 
-        <div className=" col-span-3 row-span-3 "></div>
-        <div className=" col-span-3 row-span-4 "></div>
-        <div className=" col-span-3 row-span-2 "></div>
-        <div className=" col-span-1 row-span-2"></div>
-        <div className=" col-span-3 row-span-3 "></div>
-        <div className=" col-span-4 row-span-3 "></div>
-        <div className=" col-span-3 row-span-2 "></div>
-        <div className=" col-span-3 row-span-1 "></div>
+        <div className=" col-span-3 row-span-3 ">
+          <img
+            src="/assets/ticTacToe.png"
+            alt=""
+            className=" object-cover w-full h-full"
+          />
+        </div>
+        <div className=" col-span-3 row-span-4 ">
+          <img
+            src="/assets/toDoList.png"
+            alt=""
+            className=" object-contain w-full h-full"
+          />
+        </div>
+        <div className=" col-span-3 row-span-2 ">
+          <img
+            src="/assets/headset.png"
+            alt=""
+            className=" object-cover w-full h-full"
+          />
+        </div>
+        <div className=" col-span-1 row-span-2">
+          <img
+            src="/assets/chat2.png"
+            alt=""
+            className=" object-cover w-full h-full"
+          />
+        </div>
+        <div className=" col-span-3 row-span-3 ">
+          <img
+            src="/assets/weather2.png"
+            alt=""
+            className=" object-cover w-full h-full"
+          />
+        </div>
+        <div className=" col-span-4 row-span-3 ">
+          <img
+            src="/assets/isro.png"
+            alt=""
+            className=" object-cover w-full h-full"
+          />
+        </div>
+        <div className=" col-span-3 row-span-2 ">
+          <img
+            src="/assets/Drum-kit.png"
+            alt=""
+            className=" object-cover w-full h-full"
+          />
+        </div>
+        <div className=" col-span-3 row-span-1  ">
+          <h1
+            className={`${space_mono.className} text-wrap text-white text-lg`}
+          >
+            Old Projects and games
+          </h1>
+          <p className={`${space_mono.className} text-wrap text-white`}>
+            @ayushbangar
+          </p>
+        </div>
       </div>
     </div>
   );

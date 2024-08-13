@@ -6,7 +6,6 @@ import { useRef } from "react";
 import face from "../assets/face.svg";
 import { FaInstagram, FaGithub, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import { Sacramento } from "next/font/google";
-import { State } from "../page";
 import { Screen } from "./mail";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
@@ -14,6 +13,13 @@ const sacramento = Sacramento({
   weight: "400",
   subsets: ["latin"],
 });
+enum State {
+  About,
+  Contact,
+  Games,
+  Mail,
+  Projects,
+}
 interface ContactProps {
   handleIconClick: (state: State) => void;
 }
@@ -39,7 +45,7 @@ const Contact = ({ handleIconClick }: ContactProps) => {
     <div className=" w-screen h-screen p-0 m-0 overflow-hidden flex justify-center items-center">
       <div
         id="contact"
-        className=" z-20 w-[70%] h-[70%]  rounded-xl  grid  grid-cols-3 absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className=" z-20 w-[70%] h-[70%]  rounded-xl  grid  grid-cols-3 overflow-hidden absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div className=" col-span-1  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border-r rounded-l-xl p-5 ">
           <div className="bar flex gap-3 p-5">

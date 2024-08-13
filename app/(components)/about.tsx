@@ -1,15 +1,18 @@
 "use client";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { Sacramento, Space_Mono } from "next/font/google";
 import { Progress } from "@radix-ui/themes";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
-import { State } from "../page";
 import { Screen } from "./mail";
-
+enum State {
+  About,
+  Contact,
+  Games,
+  Mail,
+  Projects,
+}
 const sacramento = Sacramento({
   weight: "400",
   subsets: ["latin"],
@@ -44,9 +47,9 @@ export default function About({ handleIconClick }: AboutProps) {
     <div className="w-screen h-screen p-0 m-0 overflow-hidden  flex justify-center items-center">
       <div
         id="about"
-        className=" z-10 h-full w-full grid grid-cols-8 grid-rows-10 gap-5 absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border p-5 border-gray-100 rounded-xl text-white m-0"
+        className=" z-10 h-full w-full grid grid-cols-8 grid-rows-10 gap-5 overflow-hidden absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border p-5 border-gray-100 rounded-xl text-white m-0"
       >
-        <div className="bar flex gap-3 col-span-2 row-span-1">
+        <div className="bar flex gap-3 col-span-2 row-span-1  ">
           <div
             onClick={closeWindow}
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
@@ -108,7 +111,9 @@ export default function About({ handleIconClick }: AboutProps) {
             and web applications.
           </p>
         </div>
-        <div className=" col-span-2 row-span-4 border rounded p-2"></div>
+        <div className=" col-span-2 row-span-4 border rounded p-2">
+          <h1 className={`text-center ${space_mono.className}`}>Achivements</h1>
+        </div>
         <div
           className={` col-span-4 row-span-4 border rounded p-2 ${space_mono.className}`}
         >

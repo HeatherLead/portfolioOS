@@ -6,7 +6,13 @@ import contact from "./assets/Contacts.svg";
 import games from "./assets/games.svg";
 import mail from "./assets/Message.svg";
 import Image from "next/image";
-import { State } from "../page";
+enum State {
+  About,
+  Contact,
+  Games,
+  Mail,
+  Projects,
+}
 interface TaskbarProps {
   handleIconClick: (state: State) => void;
 }

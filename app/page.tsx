@@ -8,8 +8,7 @@ import Games from "./(components)/games";
 import Mail from "./(components)/mail";
 import pdf from "./assets/pdf.svg";
 import Image from "next/image";
-export enum State {
-  Home,
+enum State {
   About,
   Contact,
   Games,
@@ -17,8 +16,8 @@ export enum State {
   Projects,
 }
 
-export default function page() {
-  const [activeStates, setActiveStates] = useState<State[]>([State.Home]);
+export default function Page() {
+  const [activeStates, setActiveStates] = useState<State[]>([]);
 
   const handleIconClick = (state: State) => {
     setActiveStates((prevStates) =>
@@ -32,7 +31,7 @@ export default function page() {
       case State.About:
         return <About handleIconClick={handleIconClick} key={state} />;
       case State.Projects:
-        return <Projects key={state} />;
+        return <Projects handleIconClick={handleIconClick} key={state} />;
       case State.Contact:
         return <Contact handleIconClick={handleIconClick} key={state} />;
       case State.Games:
@@ -46,10 +45,14 @@ export default function page() {
 
   return (
     <div className="bg-[url('./assets/background.svg')] bg-cover w-screen h-screen overflow-hidden  m-0 relative pt-2">
-      <div className=" flex flex-col justify-center items-center w-fit cursor-pointer absolute">
+      <a
+        href="/CV.pdf"
+        target="_blank"
+        className=" flex flex-col justify-center items-center w-fit cursor-pointer absolute"
+      >
         <Image src={pdf} alt="" height={80} width={80} />
         <h1 className=" text-white">CV.pdf</h1>
-      </div>
+      </a>
       {activeStates.map((state) => (
         <div key={state} className="component-wrapper">
           {renderComponent(state)}

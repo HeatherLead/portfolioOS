@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { HiOutlineInboxStack } from "react-icons/hi2";
 import { Avatar, Box, Button, Card, Flex, Text } from "@radix-ui/themes";
 import { IoSend } from "react-icons/io5";
-import { State } from "../page";
+
 import useDragger from "@/hooks/useDragger";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
+enum State {
+  About,
+  Contact,
+  Games,
+  Mail,
+  Projects,
+}
 export enum Screen {
   max,
   min,
@@ -38,7 +43,7 @@ const Mail = ({ handleIconClick }: MailProps) => {
     <div className=" w-screen h-screen overflow-hidden m-0 p-0  flex justify-center items-end ">
       <div
         id="mail"
-        className=" z-40 rounded-xl border grid grid-cols-4 w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className=" z-40 rounded-xl border border-white grid grid-cols-4 w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div className=" col-span-1 bg-transparent rounded-l-xl backdrop-blur-md p-3 ">
           <div className="bar flex gap-3 p-5">
