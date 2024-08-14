@@ -6,6 +6,12 @@ import { Progress } from "@radix-ui/themes";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
 import { Screen } from "./mail";
+import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FiGithub } from "react-icons/fi";
+import { SiLeetcode } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
+import { IoMailOpenOutline } from "react-icons/io5";
+import Clock from "./clock";
 enum State {
   About,
   Contact,
@@ -67,7 +73,11 @@ export default function About({ handleIconClick }: AboutProps) {
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"
           ></div>
         </div>
-        <div className=" col-span-4 row-span-4 border rounded p-2"></div>
+        <div className=" col-span-3 row-span-6 border rounded p-2"></div>
+        <div className=" col-span-1 row-span-4 border rounded p-2 flex justify-between  flex-col bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
+          <Clock />
+          <h1 className=" text-xs ">Current location time</h1>
+        </div>
         <div className=" col-span-2 row-span-4 flex p-5 justify-center items-center border rounded ">
           <Image
             width={200}
@@ -102,17 +112,53 @@ export default function About({ handleIconClick }: AboutProps) {
             <Progress value={20} color="plum" size={"2"} radius="full" />
           </div>
         </div>
-        <div className=" col-span-6 row-span-2 border rounded p-2">
+        <div className=" col-span-3 row-span-2 border rounded p-2">
           <h1 className="font-medium pb-1">About Me</h1>
           <p className=" text-sm overflow-clip">
-            Experienced web development enthusiast with a passion for creating
-            innovative digital experiences. Proficient in React, Node.js, and
-            frameworks like Next.js, 2 years of experience in building websites
-            and web applications.
+            Experienced web development enthusiast with 2 years of experience in
+            building websites and web applications.
           </p>
         </div>
-        <div className=" col-span-2 row-span-4 border rounded p-2">
-          <h1 className={`text-center ${space_mono.className}`}>Achivements</h1>
+        <div className=" col-span-2 row-span-4 border rounded p-2 ">
+          <h1 className={` text-xl mb-4 ${space_mono.className}`}>Contacts</h1>
+          <div className=" flex justify-center items-center gap-4 flex-wrap">
+            <a
+              href=""
+              className=" w-16 aspect-square bg-zinc-100 rounded flex justify-center items-center"
+            >
+              <FiGithub className=" text-slate-950 text-4xl" />
+            </a>
+            <a
+              href=""
+              className=" w-16 aspect-square bg-zinc-100 rounded flex justify-center items-center"
+            >
+              <FaLinkedinIn className=" text-slate-950 text-4xl" />
+            </a>
+            <a
+              href=""
+              className=" w-16 aspect-square bg-zinc-100 rounded flex justify-center items-center"
+            >
+              <FaInstagram className=" text-slate-950 text-4xl" />
+            </a>
+            <a
+              href=""
+              className=" w-16 aspect-square bg-zinc-100 rounded flex justify-center items-center"
+            >
+              <SiLeetcode className=" text-slate-950 text-4xl" />
+            </a>
+            <a
+              href=""
+              className=" w-16 aspect-square bg-zinc-100 rounded flex justify-center items-center"
+            >
+              <FaXTwitter className=" text-slate-950 text-4xl" />
+            </a>
+            <a
+              href=""
+              className=" w-16 aspect-square bg-zinc-100 rounded flex justify-center items-center"
+            >
+              <IoMailOpenOutline className=" text-slate-950 text-4xl" />
+            </a>
+          </div>
         </div>
         <div
           className={` col-span-4 row-span-4 border rounded p-2 ${space_mono.className}`}
@@ -148,7 +194,7 @@ export default function About({ handleIconClick }: AboutProps) {
           <p className={`text-sm font-bold pb-2  ${space_mono.className}`}>
             Bachelor of Engineering
           </p>
-          <p className=" text-xs">
+          <p className=" text-xs w-[80%]">
             Artificial Intelligence and Data science(VESIT)
           </p>
         </div>

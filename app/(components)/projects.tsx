@@ -12,7 +12,6 @@ import { Space_Mono } from "next/font/google";
 import { Screen } from "./mail";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
-import Image from "next/image";
 const space_mono = Space_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -24,7 +23,6 @@ enum State {
   Mail,
   Projects,
 }
-
 interface ProjectsProps {
   handleIconClick: (state: State) => void;
 }
@@ -48,6 +46,7 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
   };
 
   useDragger("project");
+
   return (
     <div className=" w-screen h-screen overflow-hidden m-0 p-0  flex justify-center items-center ">
       <div
@@ -89,11 +88,13 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
           id="project"
         >
           <SwiperSlide>
-            <div className=" w-full h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100 rounded-2xl p-5 text-white">
-              <div className=" grid grid-cols-2 grid-rows-1 w-full h-1/2 gap-5">
-                <div className=" col-span-1 self-center ">
-                  <h1 className=" text-5xl font-bold mb-10">VEX</h1>
-                  <div className=" flex gap-5">
+            <div className=" w-full h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100 rounded-2xl p-5">
+              <div className=" w-full h-full  rounded bg-[#f5f5f5]  ">
+                <div className=" w-full h-[80%]  bg-[url('/assets/vex.png')] bg-cover   rounded  flex justify-end items-center flex-col gap-5">
+                  <h1 className=" text-5xl font-bold text-center w-full ">
+                    Vex
+                  </h1>
+                  <div className=" flex gap-5 mb-2">
                     <Button
                       color="gray"
                       variant="outline"
@@ -107,18 +108,13 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
                     </Button>
                   </div>
                 </div>
-                <img
-                  src="/assets/vex.png"
-                  alt="vexImage"
-                  className="col-span-1 object-cover aspect-[4/3]"
-                />
+                <p className=" text-xs text-muted-foreground text-center">
+                  Developed Vex, a collaborative online whiteboard application
+                  inspired by Miro. Designed and implemented real-time
+                  collaboration features, allowing multiple users to create,
+                  edit, and share visual content seamlessly.
+                </p>
               </div>
-              <p className={` mt-3 ${space_mono.className}`}>
-                Developed Vex, a collaborative online whiteboard application
-                inspired by Miro. Designed and implemented real-time
-                collaboration features, allowing multiple users to create, edit,
-                and share visual content seamlessly.
-              </p>
             </div>
           </SwiperSlide>
           <SwiperSlide>
