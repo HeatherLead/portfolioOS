@@ -1,42 +1,40 @@
 import React, { useEffect, useRef } from "react";
 
-function useDragger(id: string): void {
-
+function useDragger(barId: string, targetId: string): void {
   const isClicked = useRef<boolean>(false);
 
   const coords = useRef<{
-    startX: number,
-    startY: number,
-    lastX: number,
-    lastY: number
+    startX: number;
+    startY: number;
+    lastX: number;
+    lastY: number;
   }>({
     startX: 0,
     startY: 0,
     lastX: 0,
-    lastY: 0
-  })
+    lastY: 0,
+  });
 
   useEffect(() => {
+    const bar = document.getElementById(barId);
+    const target = document.getElementById(targetId);
 
-    const target = document.getElementById(id);
-    if (!target) throw new Error("Element with given id doesn't exist");
+    if (!bar || !target) throw new Error("Element with given id doesn't exist");
 
     const container = target.parentElement;
     if (!container) throw new Error("target element must have a parent");
-
-
 
     const onMouseDown = (e: MouseEvent) => {
       isClicked.current = true;
       coords.current.startX = e.clientX;
       coords.current.startY = e.clientY;
-    }
+    };
 
-    const onMouseUp = (e: MouseEvent) => {
+    const onMouseUp = () => {
       isClicked.current = false;
       coords.current.lastX = target.offsetLeft;
       coords.current.lastY = target.offsetTop;
-    }
+    };
 
     const onMouseMove = (e: MouseEvent) => {
       if (!isClicked.current) return;
@@ -46,23 +44,20 @@ function useDragger(id: string): void {
 
       target.style.top = `${nextY}px`;
       target.style.left = `${nextX}px`;
-    }
+    };
 
-    target.addEventListener('mousedown', onMouseDown);
-    target.addEventListener('mouseup', onMouseUp);
-    container.addEventListener('mousemove', onMouseMove);
-    container.addEventListener('mouseleave', onMouseUp);
+    bar.addEventListener("mousedown", onMouseDown);
+    container.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+    document.addEventListener("mouseleave", onMouseUp);
 
-    const cleanup = () => {
-      target.removeEventListener('mousedown', onMouseDown);
-      target.removeEventListener('mouseup', onMouseUp);
-      container.removeEventListener('mousemove', onMouseMove);
-      container.removeEventListener('mouseleave', onMouseUp);
-    }
-
-    return cleanup;
-  }, [id])
-
+    return () => {
+      bar.removeEventListener("mousedown", onMouseDown);
+      container.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+      document.removeEventListener("mouseleave", onMouseUp);
+    };
+  }, [barId, targetId]);
 }
 
 export default useDragger;

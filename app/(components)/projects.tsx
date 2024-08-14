@@ -42,82 +42,83 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
     }
   };
 
-  useDragger("project");
+  useDragger("projectBar", "project");
 
   return (
     <div className=" w-screen h-screen overflow-hidden m-0 p-0  flex justify-center items-center ">
       <div
         id="project"
-        className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-20  grid grid-cols-3 rounded-xl   w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-20 border border-white   rounded-xl   w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
-        <div className=" col-span-1 bg-[#f5eaea]">
-          <div className="bar flex gap-3 p-5">
-            <div
-              onClick={closeWindow}
-              className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
-            ></div>
-            <div
-              onClick={() => {
-                setScreenWidth(Screen.min);
-              }}
-              className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF931E]"
-            ></div>
-            <div
-              onClick={() => {
-                setScreenWidth(Screen.max);
-              }}
-              className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"
-            ></div>
-          </div>
+        <div id="projectBar" className="bar flex gap-3 p-5 ">
+          <div
+            onClick={closeWindow}
+            className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
+          ></div>
+          <div
+            onClick={() => {
+              setScreenWidth(Screen.min);
+            }}
+            className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF931E]"
+          ></div>
+          <div
+            onClick={() => {
+              setScreenWidth(Screen.max);
+            }}
+            className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"
+          ></div>
         </div>
-        <div className=" col-span-2 bg-gradient-to-br from-neutral-100 to-neutral-50 bg-transparent p-5 lg:p-10 relative">
-          <h1 className={`text-4xl font-bold mb-20 ${poppins.className}`}>
-            Projects
-          </h1>
-          <div className="w-full h-[74%] lg:absolute -left-20 grid grid-cols-6 grid-rows-4 gap-5 p-5">
-            <Image
-              src="/assets/vexElement.png"
-              width={400}
-              height={400}
-              className=" w-full rounded shadow-md shadow-gray-400 object-cover col-span-2 row-span-2"
-              alt=""
-            />
+        <div className="grid grid-cols-3 w-full h-full">
+          <div className=" col-span-1 bg-[#f5eaea]"></div>
+          <div className=" col-span-2 bg-gradient-to-br from-neutral-100 to-neutral-50 bg-transparent p-5 relative">
+            <h1 className={`text-4xl font-bold mb-5 ${poppins.className}`}>
+              Projects
+            </h1>
+            <div className="w-full h-[74%] lg:absolute -left-20 grid grid-cols-6 grid-rows-4 gap-5 p-5">
+              <Image
+                src="/assets/vexElement.png"
+                width={400}
+                height={400}
+                className=" w-full rounded shadow-md shadow-gray-400 object-cover col-span-2 row-span-2"
+                alt=""
+              />
 
-            <Image
-              src="/assets/movieAi.png"
-              width={400}
-              height={400}
-              className=" w-full rounded shadow-md shadow-gray-400 aspect-square object-cover col-span-1"
-              alt=""
-            />
-            <Image
-              src="/assets/posterShop.png"
-              width={400}
-              height={0}
-              className=" w-full rounded shadow-md shadow-gray-400 object-cover col-span-3 row-span-2 "
-              alt=""
-            />
-            <Image
-              src="/assets/issueTracker.png"
-              width={400}
-              height={400}
-              className=" w-full rounded shadow-md shadow-gray-400 object-cover col-span-3 row-span-2"
-              alt=""
-            />
-            <Image
-              src="/assets/housieCover.png"
-              width={250}
-              height={40}
-              className=" w-full rounded shadow-md shadow-gray-400 aspect-[4/3] object-cover col-span-2 row-span-2"
-              alt=""
-            />
-            <Image
-              src="/assets/task.png"
-              width={400}
-              height={400}
-              className=" w-full rounded shadow-md shadow-gray-400 aspect-[9/15]  object-contain  col-span-1"
-              alt=""
-            />
+              <Image
+                src="/assets/movieAi.png"
+                width={400}
+                height={400}
+                className=" w-full rounded shadow-md shadow-gray-400 aspect-square object-cover col-span-1"
+                alt=""
+              />
+              <Image
+                src="/assets/posterShop.png"
+                width={400}
+                height={0}
+                className=" w-full rounded shadow-md shadow-gray-400 object-cover col-span-3 row-span-2 "
+                alt=""
+              />
+              <Image
+                src="/assets/issueTracker.png"
+                width={400}
+                height={400}
+                className=" w-full rounded shadow-md shadow-gray-400 object-cover col-span-3 row-span-2"
+                alt=""
+              />
+              <Image
+                src="/assets/housieCover.png"
+                width={250}
+                height={40}
+                className=" w-full rounded shadow-md shadow-gray-400 aspect-[4/3] object-cover col-span-2 row-span-2"
+                alt=""
+              />
+              <Image
+                src="/assets/task.png"
+                width={400}
+                height={400}
+                className=" w-full rounded shadow-md shadow-gray-400 aspect-[9/15]  object-contain  col-span-1"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>

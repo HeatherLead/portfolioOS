@@ -36,14 +36,17 @@ const Games = ({ handleIconClick }: GamesProps) => {
       });
     }
   };
-  useDragger("games");
+  useDragger("gamesBar", "games");
   return (
     <div className="w-screen h-screen p-0 m-0 overflow-hidden  flex justify-center items-center">
       <div
-        className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-30 grid grid-cols-10 grid-rows-6  gap-4 overflow-hidden w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-30 border border-white rounded-xl  overflow-hidden w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         id="games"
       >
-        <div className="bar flex gap-3 p-2 col-span-1 row-span-1 ">
+        <div
+          id="gamesBar"
+          className="bar flex gap-3 p-5 col-span-1 row-span-1 "
+        >
           <div
             onClick={closeWindow}
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
@@ -61,65 +64,64 @@ const Games = ({ handleIconClick }: GamesProps) => {
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"
           ></div>
         </div>
+        <div className=" w-full h-full grid grid-cols-10 grid-rows-6  gap-4">
+          <div className=" col-span-2 row-span-3">
+            <img
+              src="/assets/mindGame.png"
+              alt=""
+              className=" object-cover w-full h-full"
+            />
+          </div>
+          <div className=" col-span-2 row-span-3 ">
+            <img
+              src="/assets/ticTacToe.png"
+              alt=""
+              className=" object-cover w-full h-full"
+            />
+          </div>
+          <div className=" col-span-3 row-span-4 ">
+            <img
+              src="/assets/toDoList.png"
+              alt=""
+              className=" object-contain w-full h-full"
+            />
+          </div>
+          <div className=" col-span-3 row-span-2 ">
+            <img
+              src="/assets/headset.png"
+              alt=""
+              className=" object-cover w-full h-full"
+            />
+          </div>
 
-        <div className=" col-span-3 row-span-3 ">
-          <img
-            src="/assets/ticTacToe.png"
-            alt=""
-            className=" object-cover w-full h-full"
-          />
-        </div>
-        <div className=" col-span-3 row-span-4 ">
-          <img
-            src="/assets/toDoList.png"
-            alt=""
-            className=" object-contain w-full h-full"
-          />
-        </div>
-        <div className=" col-span-3 row-span-2 ">
-          <img
-            src="/assets/headset.png"
-            alt=""
-            className=" object-cover w-full h-full"
-          />
-        </div>
-        <div className=" col-span-1 row-span-2">
-          <img
-            src="/assets/chat2.png"
-            alt=""
-            className=" object-cover w-full h-full"
-          />
-        </div>
-        <div className=" col-span-3 row-span-3 ">
-          <img
-            src="/assets/weather2.png"
-            alt=""
-            className=" object-cover w-full h-full"
-          />
-        </div>
-        <div className=" col-span-4 row-span-3 ">
-          <img
-            src="/assets/isro.png"
-            alt=""
-            className=" object-cover w-full h-full"
-          />
-        </div>
-        <div className=" col-span-3 row-span-2 ">
-          <img
-            src="/assets/Drum-kit.png"
-            alt=""
-            className=" object-cover w-full h-full"
-          />
-        </div>
-        <div className=" col-span-3 row-span-1  ">
-          <h1
-            className={`${space_mono.className} text-wrap text-white text-lg`}
-          >
-            Old Projects and games
-          </h1>
-          <p className={`${space_mono.className} text-wrap text-white`}>
-            @ayushbangar
-          </p>
+          <div className=" col-span-3 row-span-3 ">
+            <img
+              src="/assets/weather2.png"
+              alt=""
+              className=" object-cover w-full h-full"
+            />
+          </div>
+          <div className=" col-span-4 row-span-3 ">
+            <img
+              src="/assets/isro.png"
+              alt=""
+              className=" object-cover w-full h-full"
+            />
+          </div>
+          <div className=" col-span-3 row-span-2 ">
+            <img
+              src="/assets/Drum-kit.png"
+              alt=""
+              className=" object-cover w-full h-full"
+            />
+          </div>
+          <div className=" col-span-3 row-span-1  ">
+            <h1
+              className={`${space_mono.className} text-wrap text-white text-lg`}
+            >
+              Old Projects and games
+            </h1>
+          </div>
         </div>
       </div>
     </div>
