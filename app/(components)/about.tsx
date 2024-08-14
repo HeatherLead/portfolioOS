@@ -12,6 +12,7 @@ import { SiLeetcode } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoMailOpenOutline } from "react-icons/io5";
 import Clock from "./clock";
+import Timeline from "./timeline";
 enum State {
   About,
   Contact,
@@ -73,8 +74,13 @@ export default function About({ handleIconClick }: AboutProps) {
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"
           ></div>
         </div>
-        <div className=" col-span-3 row-span-6 border rounded p-2"></div>
-        <div className=" col-span-1 row-span-4 border rounded p-2 flex justify-between  flex-col bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
+        <div className=" col-span-3 row-span-6 border rounded p-3">
+          <h1 className={`text-lg font-semibold mb-2  ${space_mono.className}`}>
+            My Timeline
+          </h1>
+          <Timeline />
+        </div>
+        <div className="col-span-1 row-span-4 border rounded p-2 flex justify-between  flex-col bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
           <Clock />
           <h1 className=" text-xs ">Current location time</h1>
         </div>
