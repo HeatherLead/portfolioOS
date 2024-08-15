@@ -21,8 +21,10 @@ function useDragger(barId: string, targetId: string): void {
 
     if (!bar || !target) throw new Error("Element with given id doesn't exist");
 
-    const container = target.parentElement;
-    if (!container) throw new Error("target element must have a parent");
+    if (!target.parentElement) throw new Error("target element must have a parent");
+
+    coords.current.lastX = target.offsetLeft;
+    coords.current.lastY = target.offsetTop;
 
     const onMouseDown = (e: MouseEvent) => {
       isClicked.current = true;
@@ -47,17 +49,23 @@ function useDragger(barId: string, targetId: string): void {
     };
 
     bar.addEventListener("mousedown", onMouseDown);
-    container.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
-    document.addEventListener("mouseleave", onMouseUp);
 
     return () => {
       bar.removeEventListener("mousedown", onMouseDown);
-      container.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
-      document.removeEventListener("mouseleave", onMouseUp);
     };
   }, [barId, targetId]);
+
+  useEffect(() => {
+    const target = document.getElementById(targetId);
+    if (target) {
+      coords.current.lastX = target.offsetLeft;
+      coords.current.lastY = target.offsetTop;
+    }
+  }, [targetId]);
 }
 
 export default useDragger;
