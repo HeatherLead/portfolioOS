@@ -42,11 +42,11 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
   };
 
   return (
-    <div className=" z-10 flex w-1/2 justify-evenly items-center p-4 border border-b-0 rounded-t-xl fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30 border-gray-100">
+    <div className=" z-10 flex w-full justify-center gap-10 items-center p-2 fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30 border-gray-100">
       <Image
         width={32}
         height={32}
-        className="h-9 cursor-pointer"
+        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
         src={profile.src}
         alt=""
         onClick={() => handleClick(State.About)}
@@ -55,7 +55,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
       <Image
         width={32}
         height={32}
-        className="h-9 cursor-pointer"
+        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
         src={project.src}
         alt=""
         onClick={() => handleClick(State.Projects)}
@@ -64,7 +64,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
       <Image
         width={32}
         height={32}
-        className="h-9 cursor-pointer"
+        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
         src={contact.src}
         alt=""
         onClick={() => handleClick(State.Contact)}
@@ -73,7 +73,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
       <Image
         width={32}
         height={32}
-        className="h-9 cursor-pointer"
+        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
         src={games.src}
         alt=""
         onClick={() => handleClick(State.Games)}
@@ -82,7 +82,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
       <Image
         width={32}
         height={32}
-        className="h-9 cursor-pointer"
+        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
         src={mail.src}
         alt=""
         onClick={() => handleClick(State.Mail)}

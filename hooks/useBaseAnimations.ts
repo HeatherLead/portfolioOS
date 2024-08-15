@@ -30,8 +30,8 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
             gsap.set(containerRef.current, {
                 opacity: 0,
                 bottom: 0,
-                width: 2,
-                height: 2,
+                width: 0,
+                height: 0,
                 transformOrigin: "bottom",
             });
 
@@ -47,6 +47,7 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
                     width: id === "games" || "project" ?"80%" :"70%",
                     height:"80%",
                     ease: "power2.out",
+                    
                 },
                 "-=.3"
             );
@@ -63,12 +64,13 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
 
         if (screenWidth === Screen.max) {
             t2.to(containerRef.current, {
-                width: "98%",
-                height: "96%",
+                width: "100%",
+                height: "92%",
                 ease: "power3.in",
+                borderRadius:"0",
                 left: "50%",
-                top: "42%",
-                transform: "translate(-50%, -50%)",
+                top: "0",
+                transform: "translateX(-50%)",
             });
         } else if (screenWidth === Screen.min) {
             t2.to(containerRef.current, {
@@ -78,6 +80,7 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
                 left: "50%",
                 top: "50%",
                 transform: "translate(-50%,-50%)",
+                borderRadius:"12px",
             });
         }
     }, [screenWidth]);

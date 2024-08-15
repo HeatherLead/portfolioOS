@@ -45,9 +45,12 @@ const Contact = ({ handleIconClick }: ContactProps) => {
     <div className=" w-screen h-screen p-0 m-0 overflow-hidden flex justify-center items-center">
       <div
         id="contact"
-        className=" z-20 w-[70%] h-[70%]  rounded-xl   overflow-hidden absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 border border-white"
+        className=" z-20 w-[70%] h-[70%]  rounded-xl overflow-hidden absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 border border-white"
       >
-        <div id="contactBar" className="bar flex gap-3 p-5">
+        <div
+          id="contactBar"
+          className="bar flex gap-3 p-5  hover:bg-gray-400  hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-md hover:bg-opacity-20 transition-all duration-100 hover:cursor-grab"
+        >
           <div
             onClick={closeWindow}
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
@@ -66,7 +69,7 @@ const Contact = ({ handleIconClick }: ContactProps) => {
           ></div>
         </div>
         <div className="grid  grid-cols-3 h-full">
-          <div className=" col-span-1  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border-r rounded-lb-xl p-5 "></div>
+          <div className=" col-span-1 bg-[#f7f7f7] border-r rounded-lb-xl p-5 "></div>
           <div className=" col-span-2 bg-white rounded-rb-xl grid grid-rows-4">
             <div className=" flex  justify-center items-end gap-12 row-span-1">
               <img className=" w-24 aspect-square" src={face.src} alt="" />

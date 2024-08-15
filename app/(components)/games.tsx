@@ -45,7 +45,7 @@ const Games = ({ handleIconClick }: GamesProps) => {
       >
         <div
           id="gamesBar"
-          className="bar flex gap-3 p-5 col-span-1 row-span-1 "
+          className="bar flex gap-3 p-5  hover:bg-gray-400  hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-md hover:bg-opacity-20 transition-all duration-100 hover:cursor-grab "
         >
           <div
             onClick={closeWindow}

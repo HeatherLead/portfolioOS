@@ -45,7 +45,10 @@ const Mail = ({ handleIconClick }: MailProps) => {
         id="mail"
         className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-40 rounded-xl border border-white  w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
-        <div id="mailBar" className="bar flex gap-3 p-5">
+        <div
+          id="mailBar"
+          className="bar flex gap-3 p-5  hover:bg-gray-400  hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-md hover:bg-opacity-20 transition-all duration-100 hover:cursor-grab"
+        >
           <div
             onClick={closeWindow}
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
@@ -64,8 +67,8 @@ const Mail = ({ handleIconClick }: MailProps) => {
           ></div>
         </div>
         <div className=" w-full h-full grid grid-cols-4">
-          <div className=" col-span-1 bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 rounded-lb-xl p-3 py-5 ">
-            <p className=" text-center w-full py-2 bg-gray-100 rounded-[4px] text-muted-foreground mb-5 ">
+          <div className=" col-span-1 bg-[#f7f7f7]  rounded-lb-xl p-3 py-5 ">
+            <p className=" text-center w-full py-2 bg-gray-200 rounded-[4px] text-muted-foreground mb-5 ">
               <HiOutlineInboxStack className=" inline-block mr-5" />
               all Inboxes
             </p>

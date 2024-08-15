@@ -43,14 +43,16 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
   };
 
   useDragger("projectBar", "project");
-
   return (
     <div className=" w-screen h-screen overflow-hidden m-0 p-0  flex justify-center items-center ">
       <div
         id="project"
-        className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-20 border border-white   rounded-xl   w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="z-20 border border-white   rounded-xl   w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
-        <div id="projectBar" className="bar flex gap-3 p-5 ">
+        <div
+          id="projectBar"
+          className="bar flex gap-3 p-5  hover:bg-gray-400  hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-md hover:bg-opacity-20 transition-all duration-100 hover:cursor-grab "
+        >
           <div
             onClick={closeWindow}
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"
@@ -69,8 +71,8 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
           ></div>
         </div>
         <div className="grid grid-cols-3 w-full h-full">
-          <div className=" col-span-1 bg-[#f5eaea]"></div>
-          <div className=" col-span-2 bg-gradient-to-br from-neutral-100 to-neutral-50 bg-transparent p-5 relative">
+          <div className=" col-span-1 bg-[#f7f7f7]"></div>
+          <div className=" col-span-2 bg-gradient-to-r from-white to-neutral-200 bg-transparent p-5 relative">
             <h1 className={`text-4xl font-bold mb-5 ${poppins.className}`}>
               Projects
             </h1>

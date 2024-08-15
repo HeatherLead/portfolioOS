@@ -56,7 +56,10 @@ export default function About({ handleIconClick }: AboutProps) {
         id="about"
         className=" z-10 h-full w-full   absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 rounded-xl text-white m-0"
       >
-        <div id="aboutBar" className="bar flex gap-3 p-5">
+        <div
+          id="aboutBar"
+          className="bar flex gap-3 p-5  hover:bg-gray-200  hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-md hover:bg-opacity-20 transition-all duration-100 hover:cursor-grab rounded-t-xl"
+        >
           <div
             onClick={closeWindow}
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#FF1D25]"

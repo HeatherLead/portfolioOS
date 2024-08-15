@@ -44,7 +44,7 @@ export default function Page() {
   };
 
   return (
-    <div className="bg-[url('./assets/background.svg')] bg-cover w-screen h-screen overflow-hidden  m-0 relative pt-2">
+    <div className="bg-[url('/beach.jpg')] bg-cover w-screen h-screen overflow-hidden  m-0 relative">
       <a
         href="/CV.pdf"
         target="_blank"
