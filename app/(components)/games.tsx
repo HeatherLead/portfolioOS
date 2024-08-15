@@ -4,19 +4,8 @@ import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
 import { Screen } from "./mail";
 import { Space_Mono } from "next/font/google";
-import { MdOpenInNew } from "react-icons/md";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerTrigger,
-  DrawerContent,
-  DrawerTitle,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerFooter,
-} from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
-import { FaGithub } from "react-icons/fa";
+import useExpand from "@/hooks/useExpand";
+import Isro from "./projectPages/isro";
 const space_mono = Space_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -49,6 +38,33 @@ const Games = ({ handleIconClick }: GamesProps) => {
     }
   };
   useDragger("gamesBar", "games");
+
+  const { expanded, containerRef, newComponentRef, handleExpand } = useExpand();
+
+  const images = [
+    { src: "/assets/mindGame.png", colSpan: 2, rowSpan: 3 },
+    { src: "/assets/ticTacToe.png", colSpan: 2, rowSpan: 3 },
+    { src: "/assets/toDoList.png", colSpan: 3, rowSpan: 4 },
+    { src: "/assets/headset.png", colSpan: 3, rowSpan: 2 },
+    { src: "/assets/weather2.png", colSpan: 3, rowSpan: 3 },
+    { src: "/assets/isro.png", colSpan: 4, rowSpan: 3 },
+    { src: "/assets/Drum-kit.png", colSpan: 3, rowSpan: 2 },
+  ];
+  const renderExpandedContent = () => {
+    switch (expanded) {
+      case 0:
+        return <Isro handleExpand={handleExpand} />;
+      case 1:
+        return <div>sdas</div>;
+      case 2:
+        return <div>sdsa</div>;
+      case 3:
+        return <div>sds</div>;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="w-screen h-screen p-0 m-0 overflow-hidden  flex justify-center items-center">
       <div
@@ -76,9 +92,53 @@ const Games = ({ handleIconClick }: GamesProps) => {
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"
           ></div>
         </div>
-        <div className=" w-full h-full grid grid-cols-10 grid-rows-6  gap-4">
-          <div className=" col-span-2 row-span-3">
-            <Drawer>
+        <div
+          ref={containerRef}
+          className="holder w-full h-full grid grid-cols-10 grid-rows-6 gap-4"
+        >
+          {images.map((img, index) => (
+            <div
+              key={index}
+              className={`col-span-${img.colSpan} row-span-${img.rowSpan}`}
+              onClick={() => handleExpand(index)}
+            >
+              <img
+                src={img.src}
+                alt=""
+                className="object-cover w-full h-full"
+              />
+            </div>
+          ))}
+          {expanded === null && (
+            <div className="col-span-3 row-span-1">
+              <h1
+                className={`${space_mono.className} text-wrap text-white text-lg`}
+              >
+                Old Projects and games
+              </h1>
+            </div>
+          )}
+
+          <div
+            ref={newComponentRef}
+            className={`absolute top-14 left-0 w-full h-full bg-white overflow-hidden ${
+              expanded !== null ? "grid" : "hidden"
+            }`}
+          >
+            {expanded === 0 && <Isro handleExpand={handleExpand} />}
+            {expanded === 1 && <div>Expanded Content for Tic Tac Toe</div>}
+            {expanded === 2 && <div>Expanded Content for To Do List</div>}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Games;
+
+{
+  /* <Drawer>
               <DrawerTrigger asChild className=" w-full h-full">
                 <img
                   src="/assets/mindGame.png"
@@ -90,37 +150,39 @@ const Games = ({ handleIconClick }: GamesProps) => {
                 <DrawerHeader>
                   <DrawerTitle>Mind Game</DrawerTitle>
                   <DrawerDescription>
-                    <div className=" flex gap-5 py-5">
-                      <img
-                        src="/assets/mindGame.png"
-                        className=" object-cover w-2/3"
-                        draggable
-                        alt=""
-                      />
-                      <div>
-                        <p className=" mb-5 text-balance">
-                          Welcome to Mind Game, a captivating and challenging
-                          puzzle game designed to stimulate your brain and
-                          enhance your cognitive abilities. This game offers a
-                          series of levels that progressively increase in
-                          difficulty, providing a fun and engaging way to test
-                          your mental agility, problem-solving skills, and
-                          memory.
-                        </p>
-                        <div className=" flex gap-5">
-                          <Button
-                            className=" rounded  "
-                            color="white"
-                            variant="outline"
-                          >
-                            Code <FaGithub className=" ml-4" />
-                          </Button>
-                          <Button className=" rounded bg-[#FF931E] hover:bg-orange-500  ">
-                            Preview <MdOpenInNew className=" ml-4" />
-                          </Button>
+                    <ScrollArea className="">
+                      <div className=" flex gap-5 py-5">
+                        <img
+                          src="/assets/isro.png"
+                          className=" object-cover w-2/3"
+                          draggable
+                          alt=""
+                        />
+                        <div>
+                          <p className=" mb-5 text-balance">
+                            Welcome to Mind Game, a captivating and challenging
+                            puzzle game designed to stimulate your brain and
+                            enhance your cognitive abilities. This game offers a
+                            series of levels that progressively increase in
+                            difficulty, providing a fun and engaging way to test
+                            your mental agility, problem-solving skills, and
+                            memory.
+                          </p>
+                          <div className=" flex gap-5">
+                            <Button
+                              className=" rounded  "
+                              color="white"
+                              variant="outline"
+                            >
+                              Code <FaGithub className=" ml-4" />
+                            </Button>
+                            <Button className=" rounded bg-[#FF931E] hover:bg-orange-500  ">
+                              Preview <MdOpenInNew className=" ml-4" />
+                            </Button>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </ScrollArea>
                   </DrawerDescription>
                 </DrawerHeader>
                 <DrawerFooter>
@@ -136,62 +198,5 @@ const Games = ({ handleIconClick }: GamesProps) => {
                   </DrawerClose>
                 </DrawerFooter>
               </DrawerContent>
-            </Drawer>
-          </div>
-          <div className=" col-span-2 row-span-3 ">
-            <img
-              src="/assets/ticTacToe.png"
-              alt=""
-              className=" object-cover w-full h-full"
-            />
-          </div>
-          <div className=" col-span-3 row-span-4 ">
-            <img
-              src="/assets/toDoList.png"
-              alt=""
-              className=" object-contain w-full h-full"
-            />
-          </div>
-          <div className=" col-span-3 row-span-2 ">
-            <img
-              src="/assets/headset.png"
-              alt=""
-              className=" object-cover w-full h-full"
-            />
-          </div>
-
-          <div className=" col-span-3 row-span-3 ">
-            <img
-              src="/assets/weather2.png"
-              alt=""
-              className=" object-cover w-full h-full"
-            />
-          </div>
-          <div className=" col-span-4 row-span-3 ">
-            <img
-              src="/assets/isro.png"
-              alt=""
-              className=" object-cover w-full h-full"
-            />
-          </div>
-          <div className=" col-span-3 row-span-2 ">
-            <img
-              src="/assets/Drum-kit.png"
-              alt=""
-              className=" object-cover w-full h-full"
-            />
-          </div>
-          <div className=" col-span-3 row-span-1  ">
-            <h1
-              className={`${space_mono.className} text-wrap text-white text-lg`}
-            >
-              Old Projects and games
-            </h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Games;
+            </Drawer> */
+}

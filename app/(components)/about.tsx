@@ -54,7 +54,7 @@ export default function About({ handleIconClick }: AboutProps) {
     <div className="w-screen h-screen p-0 m-0 overflow-hidden  flex justify-center items-center">
       <div
         id="about"
-        className=" z-10 h-full w-full   absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 rounded-xl text-white m-0"
+        className=" z-10 h-full w-full absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 rounded-xl text-white m-0"
       >
         <div
           id="aboutBar"
