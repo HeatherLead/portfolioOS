@@ -3,7 +3,6 @@ import { Poppins, Sacramento } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { Theme, ThemePanel } from "@radix-ui/themes";
-import Taskbar from "./taskbar/Taskbar";
 import "@fontsource/sacramento";
 const poppins = Poppins({
   weight: "400",

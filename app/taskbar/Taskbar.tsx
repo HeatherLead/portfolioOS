@@ -1,11 +1,16 @@
 import React, { useRef } from "react";
-import home from "./assets/Icons.svg";
 import profile from "./assets/User.svg";
 import project from "./assets/Folders.svg";
 import contact from "./assets/Contacts.svg";
 import games from "./assets/games.svg";
 import mail from "./assets/Message.svg";
 import Image from "next/image";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 enum State {
   About,
@@ -43,50 +48,133 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
 
   return (
     <div className=" z-10 flex w-full justify-center gap-10 items-center p-2 fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30 border-gray-100">
-      <Image
-        width={32}
-        height={32}
-        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
-        src={profile.src}
-        alt=""
-        onClick={() => handleClick(State.About)}
-      />
+      <div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              {" "}
+              <Image
+                width={32}
+                height={32}
+                className="h-12 w-12 cursor-pointer p-2 rounded aspect-square hover:border border-white border-opacity-20"
+                src={profile.src}
+                alt=""
+                onClick={() => handleClick(State.About)}
+              />
+            </TooltipTrigger>
+            <TooltipContent className=" rounded text-white">
+              <p>About</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        <hr
+          className={`w-4 relative left-1/2 -translate-x-1/2 rounded-full animate-accordion-up duration-500 ${
+            activeStates.includes(State.About) ? " opacity-100" : " opacity-0"
+          }`}
+        />
+      </div>
+      <div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Image
+                width={32}
+                height={32}
+                className="h-12 w-12 cursor-pointer p-2 rounded aspect-square hover:border border-white border-opacity-20"
+                src={project.src}
+                alt=""
+                onClick={() => handleClick(State.Projects)}
+              />
+            </TooltipTrigger>
+            <TooltipContent className=" rounded text-white">
+              <p>Projects</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
-      <Image
-        width={32}
-        height={32}
-        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
-        src={project.src}
-        alt=""
-        onClick={() => handleClick(State.Projects)}
-      />
+        <hr
+          className={`w-4 relative left-1/2 -translate-x-1/2 rounded-full animate-accordion-up duration-500 ${
+            activeStates.includes(State.Projects)
+              ? " opacity-100"
+              : " opacity-0"
+          }`}
+        />
+      </div>
+      <div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Image
+                width={32}
+                height={32}
+                className="h-12 w-12 cursor-pointer p-2 rounded aspect-square hover:border border-white border-opacity-20"
+                src={contact.src}
+                alt=""
+                onClick={() => handleClick(State.Contact)}
+              />
+            </TooltipTrigger>
+            <TooltipContent className=" rounded text-white">
+              <p>Contact</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
-      <Image
-        width={32}
-        height={32}
-        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
-        src={contact.src}
-        alt=""
-        onClick={() => handleClick(State.Contact)}
-      />
+        <hr
+          className={`w-4 relative left-1/2 -translate-x-1/2 rounded-full animate-accordion-up duration-500 ${
+            activeStates.includes(State.Contact) ? " opacity-100" : " opacity-0"
+          }`}
+        />
+      </div>
+      <div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Image
+                width={32}
+                height={32}
+                className="h-12 w-12 cursor-pointer p-2 rounded aspect-square hover:border border-white border-opacity-20"
+                src={games.src}
+                alt=""
+                onClick={() => handleClick(State.Games)}
+              />
+            </TooltipTrigger>
+            <TooltipContent className=" rounded text-white">
+              <p>Games</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
-      <Image
-        width={32}
-        height={32}
-        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
-        src={games.src}
-        alt=""
-        onClick={() => handleClick(State.Games)}
-      />
+        <hr
+          className={`w-4 relative left-1/2 -translate-x-1/2 rounded-full animate-accordion-up duration-500 ${
+            activeStates.includes(State.Games) ? " opacity-100" : " opacity-0"
+          }`}
+        />
+      </div>
+      <div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Image
+                width={32}
+                height={32}
+                className="h-12 w-12 cursor-pointer p-2 rounded aspect-square hover:border border-white border-opacity-20"
+                src={mail.src}
+                alt=""
+                onClick={() => handleClick(State.Mail)}
+              />
+            </TooltipTrigger>
+            <TooltipContent className=" rounded text-white">
+              <p>Mail</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
-      <Image
-        width={32}
-        height={32}
-        className="h-12 w-12 cursor-pointer p-2 rounded aspect-square"
-        src={mail.src}
-        alt=""
-        onClick={() => handleClick(State.Mail)}
-      />
+        <hr
+          className={`w-4 relative left-1/2 -translate-x-1/2 rounded-full animate-accordion-up duration-500 ${
+            activeStates.includes(State.Mail) ? " opacity-100" : " opacity-0"
+          }`}
+        />
+      </div>
     </div>
   );
 };

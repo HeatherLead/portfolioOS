@@ -9,6 +9,7 @@ import { Sacramento } from "next/font/google";
 import { Screen } from "./mail";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
+import Sidebar from "./sidebar";
 const sacramento = Sacramento({
   weight: "400",
   subsets: ["latin"],
@@ -69,7 +70,9 @@ const Contact = ({ handleIconClick }: ContactProps) => {
           ></div>
         </div>
         <div className="grid  grid-cols-3 h-full">
-          <div className=" col-span-1 bg-[#f7f7f7] border-r rounded-lb-xl p-5 "></div>
+          <div className=" col-span-1 bg-[#f7f7f7] border-r rounded-lb-xl">
+            <Sidebar />
+          </div>
           <div className=" col-span-2 bg-white rounded-rb-xl grid grid-rows-4">
             <div className=" flex  justify-center items-end gap-12 row-span-1">
               <img className=" w-24 aspect-square" src={face.src} alt="" />

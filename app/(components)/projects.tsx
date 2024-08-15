@@ -5,6 +5,8 @@ import { Screen } from "./mail";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
 import Image from "next/image";
+import Sidebar from "./sidebar";
+
 const space_mono = Space_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -71,8 +73,10 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
           ></div>
         </div>
         <div className="grid grid-cols-3 w-full h-full">
-          <div className=" col-span-1 bg-[#f7f7f7]"></div>
-          <div className=" col-span-2 bg-gradient-to-r from-white to-neutral-200 bg-transparent p-5 relative">
+          <div className=" col-span-1 bg-[#f7f7f7]">
+            <Sidebar />
+          </div>
+          <div className=" col-span-2 bg-gradient-to-r from-white to-neutral-200 border-b-0 bg-transparent p-5 relative">
             <h1 className={`text-4xl font-bold mb-5 ${poppins.className}`}>
               Projects
             </h1>
@@ -129,60 +133,3 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
 };
 
 export default Projects;
-
-//  <Swiper
-//           effect={"coverflow"}
-//           grabCursor={true}
-//           centerInsufficientSlides={true}
-//           centeredSlides={true}
-//           slidesPerView={2}
-//           coverflowEffect={{
-//             rotate: 0,
-//             stretch: 0,
-//             depth: 100,
-//             modifier: 2.5,
-//           }}
-//           modules={[EffectCoverflow, Pagination, Navigation]}
-//           className="swiper-container flex justify-center items-center absolute overflow-hidden w-full h-[70%]  "
-//           id="project"
-//         >
-//           <SwiperSlide>
-//             <div className=" w-full h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100 rounded-2xl p-5">
-//               <div className=" w-full h-full  rounded bg-[#f5f5f5]  ">
-//                 <div className=" w-full h-[80%]  bg-[url('/assets/vex.png')] bg-cover   rounded  flex justify-end items-center flex-col gap-5">
-//                   <h1 className=" text-5xl font-bold text-center w-full ">
-//                     Vex
-//                   </h1>
-//                   <div className=" flex gap-5 mb-2">
-//                     <Button
-//                       color="gray"
-//                       variant="outline"
-//                       size={"3"}
-//                       highContrast
-//                     >
-//                       Code <FaGithub />
-//                     </Button>
-//                     <Button size={"3"}>
-//                       Preview <RxOpenInNewWindow />
-//                     </Button>
-//                   </div>
-//                 </div>
-//                 <p className=" text-xs text-muted-foreground text-center">
-//                   Developed Vex, a collaborative online whiteboard application
-//                   inspired by Miro. Designed and implemented real-time
-//                   collaboration features, allowing multiple users to create,
-//                   edit, and share visual content seamlessly.
-//                 </p>
-//               </div>
-//             </div>
-//           </SwiperSlide>
-//           <SwiperSlide>
-//             <div className=" w-full h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100 rounded-2xl"></div>
-//           </SwiperSlide>
-//           <SwiperSlide>
-//             <div className=" w-full h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100 rounded-2xl"></div>
-//           </SwiperSlide>
-//           <SwiperSlide>
-//             <div className=" w-full h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100 rounded-2xl"></div>
-//           </SwiperSlide>
-//         </Swiper>

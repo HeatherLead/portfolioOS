@@ -4,7 +4,19 @@ import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
 import { Screen } from "./mail";
 import { Space_Mono } from "next/font/google";
-import Image from "next/image";
+import { MdOpenInNew } from "react-icons/md";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerFooter,
+} from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+import { FaGithub } from "react-icons/fa";
 const space_mono = Space_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -66,11 +78,65 @@ const Games = ({ handleIconClick }: GamesProps) => {
         </div>
         <div className=" w-full h-full grid grid-cols-10 grid-rows-6  gap-4">
           <div className=" col-span-2 row-span-3">
-            <img
-              src="/assets/mindGame.png"
-              alt=""
-              className=" object-cover w-full h-full"
-            />
+            <Drawer>
+              <DrawerTrigger asChild className=" w-full h-full">
+                <img
+                  src="/assets/mindGame.png"
+                  alt=""
+                  className=" object-cover w-full h-full"
+                />
+              </DrawerTrigger>
+              <DrawerContent className=" text-white ">
+                <DrawerHeader>
+                  <DrawerTitle>Mind Game</DrawerTitle>
+                  <DrawerDescription>
+                    <div className=" flex gap-5 py-5">
+                      <img
+                        src="/assets/mindGame.png"
+                        className=" object-cover w-2/3"
+                        draggable
+                        alt=""
+                      />
+                      <div>
+                        <p className=" mb-5 text-balance">
+                          Welcome to Mind Game, a captivating and challenging
+                          puzzle game designed to stimulate your brain and
+                          enhance your cognitive abilities. This game offers a
+                          series of levels that progressively increase in
+                          difficulty, providing a fun and engaging way to test
+                          your mental agility, problem-solving skills, and
+                          memory.
+                        </p>
+                        <div className=" flex gap-5">
+                          <Button
+                            className=" rounded  "
+                            color="white"
+                            variant="outline"
+                          >
+                            Code <FaGithub className=" ml-4" />
+                          </Button>
+                          <Button className=" rounded bg-[#FF931E] hover:bg-orange-500  ">
+                            Preview <MdOpenInNew className=" ml-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </DrawerDescription>
+                </DrawerHeader>
+                <DrawerFooter>
+                  <DrawerClose>
+                    <Button
+                      variant="outline"
+                      style={{
+                        borderRadius: "6px",
+                      }}
+                    >
+                      Back
+                    </Button>
+                  </DrawerClose>
+                </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
           </div>
           <div className=" col-span-2 row-span-3 ">
             <img

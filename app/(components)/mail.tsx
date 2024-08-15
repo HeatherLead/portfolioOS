@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { HiOutlineInboxStack } from "react-icons/hi2";
 import { Avatar, Box, Button, Card, Flex, Text } from "@radix-ui/themes";
 import { IoSend } from "react-icons/io5";
-
 import useDragger from "@/hooks/useDragger";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 enum State {
