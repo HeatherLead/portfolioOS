@@ -6,16 +6,21 @@ const useExpand = () => {
   const [expanded, setExpanded] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const newComponentRef = useRef<HTMLDivElement | null>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
     if (expanded !== null && newComponentRef.current) {
-      const newComponent = newComponentRef.current;
+      const tl = gsap.timeline();
 
-      gsap.fromTo(
-        newComponent,
+      tl.set(newComponentRef.current,{
+        transformOrigin:"bottom"
+      })
+
+      tl.fromTo(
+        newComponentRef.current,
         {
           opacity: 0,
-          scale: 0.8,
+          scale: 0,
         },
         {
           duration: 0.5,
@@ -24,21 +29,16 @@ const useExpand = () => {
           ease: 'power2.out',
         }
       );
-    } else if (newComponentRef.current) {
-      gsap.to(newComponentRef.current, {
-        duration: 0.5,
-        opacity: 0,
-        scale: 0.8,
-        ease: 'power2.in',
-        onComplete: () => {
-          gsap.set(newComponentRef.current, { scale: 1, opacity: 1 });
-        },
-      });
-    }
+      timelineRef.current = tl;
+    } 
   }, [expanded]);
 
   const handleExpand = (index: number | null) => {
-    setExpanded(expanded === index ? null : index);
+    if (timelineRef.current && expanded !== null) {
+      timelineRef.current.reverse().then(() => setExpanded(index));
+    } else {
+      setExpanded(index);
+    }
   };
 
   return {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Sacramento } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import "@fontsource/sacramento";
 const poppins = Poppins({
   weight: "400",
