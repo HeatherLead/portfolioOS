@@ -19,6 +19,7 @@ enum State {
   Games,
   Mail,
   Projects,
+  Cv,
 }
 const sacramento = Sacramento({
   weight: "400",

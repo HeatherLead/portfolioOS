@@ -6,6 +6,8 @@ import { Screen } from "./mail";
 import { Space_Mono } from "next/font/google";
 import useExpand from "@/hooks/useExpand";
 import Isro from "./projectPages/isro";
+import { gamesData } from "@/data/data";
+import GameDetailComponent from "./gameDetailComponent";
 const space_mono = Space_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -16,7 +18,17 @@ enum State {
   Games,
   Mail,
   Projects,
+  Cv,
 }
+
+type gameDetail = {
+  title: string;
+  description: string;
+  image: string;
+  techStack: string[];
+  previewLink: string;
+  githubLink: string;
+};
 interface GamesProps {
   handleIconClick: (state: State) => void;
 }
@@ -53,13 +65,61 @@ const Games = ({ handleIconClick }: GamesProps) => {
   const renderExpandedContent = () => {
     switch (expanded) {
       case 0:
-        return <Isro handleExpand={handleExpand} />;
+        return (
+          <GameDetailComponent
+            handleExpand={handleExpand}
+            data={gamesData[0]}
+          />
+        );
       case 1:
-        return <div>sdas</div>;
+        return (
+          <GameDetailComponent
+            handleExpand={handleExpand}
+            data={gamesData[1]}
+          />
+        );
       case 2:
-        return <div>sdsa</div>;
+        return (
+          <GameDetailComponent
+            handleExpand={handleExpand}
+            data={gamesData[2]}
+          />
+        );
       case 3:
-        return <div>sds</div>;
+        return (
+          <GameDetailComponent
+            handleExpand={handleExpand}
+            data={gamesData[3]}
+          />
+        );
+      case 4:
+        return (
+          <GameDetailComponent
+            handleExpand={handleExpand}
+            data={gamesData[4]}
+          />
+        );
+      case 5:
+        return (
+          <GameDetailComponent
+            handleExpand={handleExpand}
+            data={gamesData[5]}
+          />
+        );
+      case 6:
+        return (
+          <GameDetailComponent
+            handleExpand={handleExpand}
+            data={gamesData[6]}
+          />
+        );
+      case 7:
+        return (
+          <GameDetailComponent
+            handleExpand={handleExpand}
+            data={gamesData[7]}
+          />
+        );
       default:
         return null;
     }
@@ -125,9 +185,7 @@ const Games = ({ handleIconClick }: GamesProps) => {
               expanded !== null ? "grid" : "hidden"
             }`}
           >
-            {expanded === 0 && <Isro handleExpand={handleExpand} />}
-            {expanded === 1 && <div>Expanded Content for Tic Tac Toe</div>}
-            {expanded === 2 && <div>Expanded Content for To Do List</div>}
+            {renderExpandedContent()}
           </div>
         </div>
       </div>
@@ -136,67 +194,3 @@ const Games = ({ handleIconClick }: GamesProps) => {
 };
 
 export default Games;
-
-{
-  /* <Drawer>
-              <DrawerTrigger asChild className=" w-full h-full">
-                <img
-                  src="/assets/mindGame.png"
-                  alt=""
-                  className=" object-cover w-full h-full"
-                />
-              </DrawerTrigger>
-              <DrawerContent className=" text-white ">
-                <DrawerHeader>
-                  <DrawerTitle>Mind Game</DrawerTitle>
-                  <DrawerDescription>
-                    <ScrollArea className="">
-                      <div className=" flex gap-5 py-5">
-                        <img
-                          src="/assets/isro.png"
-                          className=" object-cover w-2/3"
-                          draggable
-                          alt=""
-                        />
-                        <div>
-                          <p className=" mb-5 text-balance">
-                            Welcome to Mind Game, a captivating and challenging
-                            puzzle game designed to stimulate your brain and
-                            enhance your cognitive abilities. This game offers a
-                            series of levels that progressively increase in
-                            difficulty, providing a fun and engaging way to test
-                            your mental agility, problem-solving skills, and
-                            memory.
-                          </p>
-                          <div className=" flex gap-5">
-                            <Button
-                              className=" rounded  "
-                              color="white"
-                              variant="outline"
-                            >
-                              Code <FaGithub className=" ml-4" />
-                            </Button>
-                            <Button className=" rounded bg-[#FF931E] hover:bg-orange-500  ">
-                              Preview <MdOpenInNew className=" ml-4" />
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </ScrollArea>
-                  </DrawerDescription>
-                </DrawerHeader>
-                <DrawerFooter>
-                  <DrawerClose>
-                    <Button
-                      variant="outline"
-                      style={{
-                        borderRadius: "6px",
-                      }}
-                    >
-                      Back
-                    </Button>
-                  </DrawerClose>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer> */
-}

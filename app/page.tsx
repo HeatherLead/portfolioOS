@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Taskbar from "./taskbar/Taskbar";
 import About from "./(components)/about";
 import Contact from "./(components)/Contact";
@@ -8,16 +8,29 @@ import Games from "./(components)/games";
 import Mail from "./(components)/mail";
 import pdf from "./assets/pdf.svg";
 import Image from "next/image";
+import CvViewer from "./(components)/cvViewer";
 enum State {
   About,
   Contact,
   Games,
   Mail,
   Projects,
+  Cv,
 }
 
 export default function Page() {
   const [activeStates, setActiveStates] = useState<State[]>([]);
+  const t1Ref = useRef<GSAPTimeline | null>(null);
+
+  const closeWindow = (state: State) => {
+    if (t1Ref.current) {
+      t1Ref.current.reverse().then(() => {
+        handleIconClick(state);
+      });
+    } else {
+      handleIconClick(state);
+    }
+  };
 
   const handleIconClick = (state: State) => {
     setActiveStates((prevStates) =>
@@ -38,6 +51,8 @@ export default function Page() {
         return <Games handleIconClick={handleIconClick} key={state} />;
       case State.Mail:
         return <Mail handleIconClick={handleIconClick} key={state} />;
+      case State.Cv:
+        return <CvViewer handleIconClick={handleIconClick} key={state} />;
       default:
         return null;
     }
@@ -46,7 +61,9 @@ export default function Page() {
   return (
     <div className="bg-[url('/beach.jpg')] bg-cover w-screen h-screen overflow-hidden  m-0 relative">
       <a
-        href="/CV.pdf"
+        onClick={() => {
+          closeWindow(State.Cv);
+        }}
         target="_blank"
         className=" flex flex-col justify-center items-center w-fit cursor-pointer absolute"
       >

@@ -18,8 +18,8 @@ enum State {
   Games,
   Mail,
   Projects,
+  Cv,
 }
-
 interface TaskbarProps {
   handleIconClick: (state: State) => void;
   activeStates: State[];
@@ -52,7 +52,6 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
-              {" "}
               <Image
                 width={32}
                 height={32}
@@ -62,7 +61,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
                 onClick={() => handleClick(State.About)}
               />
             </TooltipTrigger>
-            <TooltipContent className=" rounded text-white">
+            <TooltipContent className=" rounded ">
               <p>About</p>
             </TooltipContent>
           </Tooltip>
@@ -86,7 +85,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
                 onClick={() => handleClick(State.Projects)}
               />
             </TooltipTrigger>
-            <TooltipContent className=" rounded text-white">
+            <TooltipContent className=" rounded">
               <p>Projects</p>
             </TooltipContent>
           </Tooltip>
@@ -113,7 +112,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
                 onClick={() => handleClick(State.Contact)}
               />
             </TooltipTrigger>
-            <TooltipContent className=" rounded text-white">
+            <TooltipContent className=" rounded ">
               <p>Contact</p>
             </TooltipContent>
           </Tooltip>
@@ -138,7 +137,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
                 onClick={() => handleClick(State.Games)}
               />
             </TooltipTrigger>
-            <TooltipContent className=" rounded text-white">
+            <TooltipContent className=" rounded ">
               <p>Games</p>
             </TooltipContent>
           </Tooltip>
@@ -163,7 +162,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
                 onClick={() => handleClick(State.Mail)}
               />
             </TooltipTrigger>
-            <TooltipContent className=" rounded text-white">
+            <TooltipContent className=" rounded ">
               <p>Mail</p>
             </TooltipContent>
           </Tooltip>

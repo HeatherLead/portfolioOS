@@ -11,6 +11,7 @@ enum State {
   Games,
   Mail,
   Projects,
+  Cv,
 }
 export enum Screen {
   max,

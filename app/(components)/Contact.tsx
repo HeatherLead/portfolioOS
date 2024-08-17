@@ -20,6 +20,7 @@ enum State {
   Games,
   Mail,
   Projects,
+  Cv,
 }
 interface ContactProps {
   handleIconClick: (state: State) => void;
