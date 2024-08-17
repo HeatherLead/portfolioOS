@@ -21,14 +21,6 @@ enum State {
   Cv,
 }
 
-type gameDetail = {
-  title: string;
-  description: string;
-  image: string;
-  techStack: string[];
-  previewLink: string;
-  githubLink: string;
-};
 interface GamesProps {
   handleIconClick: (state: State) => void;
 }
@@ -63,65 +55,15 @@ const Games = ({ handleIconClick }: GamesProps) => {
     { src: "/assets/Drum-kit.png", colSpan: 3, rowSpan: 2 },
   ];
   const renderExpandedContent = () => {
-    switch (expanded) {
-      case 0:
-        return (
-          <GameDetailComponent
-            handleExpand={handleExpand}
-            data={gamesData[0]}
-          />
-        );
-      case 1:
-        return (
-          <GameDetailComponent
-            handleExpand={handleExpand}
-            data={gamesData[1]}
-          />
-        );
-      case 2:
-        return (
-          <GameDetailComponent
-            handleExpand={handleExpand}
-            data={gamesData[2]}
-          />
-        );
-      case 3:
-        return (
-          <GameDetailComponent
-            handleExpand={handleExpand}
-            data={gamesData[3]}
-          />
-        );
-      case 4:
-        return (
-          <GameDetailComponent
-            handleExpand={handleExpand}
-            data={gamesData[4]}
-          />
-        );
-      case 5:
-        return (
-          <GameDetailComponent
-            handleExpand={handleExpand}
-            data={gamesData[5]}
-          />
-        );
-      case 6:
-        return (
-          <GameDetailComponent
-            handleExpand={handleExpand}
-            data={gamesData[6]}
-          />
-        );
-      case 7:
-        return (
-          <GameDetailComponent
-            handleExpand={handleExpand}
-            data={gamesData[7]}
-          />
-        );
-      default:
-        return null;
+    if (expanded !== null && expanded >= 0 && expanded < gamesData.length) {
+      return (
+        <GameDetailComponent
+          handleParentExpand={handleExpand}
+          data={gamesData[expanded]}
+        />
+      );
+    } else {
+      return null;
     }
   };
 

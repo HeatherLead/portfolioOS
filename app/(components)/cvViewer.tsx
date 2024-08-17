@@ -64,7 +64,7 @@ const CvViewer = ({ handleIconClick }: CvViewerProps) => {
             className=" w-5 h-5 border border-white rounded-full cursor-pointer bg-[#8CC63F]"
           ></div>
         </div>
-        <div className=" w-full h-full">
+        <div className="w-full h-full">
           <iframe className="w-full h-full overflow-hidden" src="/CV.pdf" />
         </div>
       </div>

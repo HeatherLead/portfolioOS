@@ -7,6 +7,8 @@ import { Poppins } from "next/font/google";
 import { MdOpenInNew } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
+import useExpand from "@/hooks/useExpand";
+import { IoGameController } from "react-icons/io5";
 const poppins = Poppins({
   weight: "700",
   subsets: ["latin"],
@@ -18,27 +20,29 @@ type gameDetail = {
   techStack: string[];
   previewLink: string;
   githubLink: string;
+  isGame: boolean;
 };
 
 interface GameDetailComponentProps {
-  handleExpand: (idx: number | null) => void;
+  handleParentExpand: (idx: number | null) => void;
   data: gameDetail;
 }
 
 const GameDetailComponent = ({
-  handleExpand,
+  handleParentExpand,
   data,
 }: GameDetailComponentProps) => {
   if (!data) return;
+  const { containerRef, expanded, handleExpand, newComponentRef } = useExpand();
   return (
-    <ScrollArea className="w-full p-5 pb-20 bg-[#f7f7f7]">
+    <ScrollArea ref={containerRef} className="w-full p-5 pb-20 bg-[#f7f7f7]">
       <div className=" w-full flex justify-between mb-2">
         <h1 className={` tracking-widest text-4xl ${poppins.className}`}>
           {data.title}
         </h1>
         <Button
           variant={"link"}
-          onClick={() => handleExpand(null)}
+          onClick={() => handleParentExpand(null)}
           className=""
         >
           <IoMdArrowRoundBack className=" text-lg mr-2" /> Close
@@ -84,8 +88,35 @@ const GameDetailComponent = ({
                 Github <FaGithub className=" text-lg" />
               </a>
             </Button>
+            {data.isGame && (
+              <Button variant={"secondary"}>
+                <a
+                  className={`flex justify-between w-full ${poppins.className}`}
+                  onClick={() => handleExpand(1)}
+                >
+                  play now <IoGameController className=" text-lg" />
+                </a>
+              </Button>
+            )}
           </div>
         </div>
+      </div>
+      <div
+        ref={newComponentRef}
+        className={`absolute top-0 left-0 w-full h-full  ${
+          expanded !== null ? "grid" : "hidden"
+        }`}
+      >
+        <div className=" fixed top-0 w-full flex justify-end p-5  ">
+          <Button
+            variant={"link"}
+            onClick={() => handleExpand(null)}
+            className=" text-white"
+          >
+            <IoMdArrowRoundBack className=" text-lg mr-2" /> Close
+          </Button>
+        </div>
+        <iframe src={data.previewLink} className="w-full h-full" />
       </div>
     </ScrollArea>
   );

@@ -8,6 +8,7 @@ export const gamesData = [
         techStack:["Html","Css","Javascript"],
         previewLink:"https://mind-game-ten.vercel.app/",
         githubLink:"https://github.com/HeatherLead/Mind-Game",
+        isGame: true,
     },
     {
         title:"Tic Tac Toe",
@@ -16,6 +17,7 @@ export const gamesData = [
         techStack:["Html","Css","Javascript"],
         previewLink:"https://prodigy-wd-03-kappa.vercel.app/",
         githubLink:"https://github.com/HeatherLead/prodigy-wd-03",
+        isGame: true,
     },
     {
         title:"To Do List",
@@ -24,6 +26,7 @@ export const gamesData = [
         techStack:["React js","Css","Javascript"],
         previewLink:"https://to-do-list-nine-beryl.vercel.app/",
         githubLink:"https://github.com/HeatherLead/toDoList",
+        isGame: false,
     },
     {
         title:"Apple",
@@ -32,6 +35,7 @@ export const gamesData = [
         techStack:["React js","Css","Javascript"],
         previewLink:"https://apple-plum-chi.vercel.app/",
         githubLink:"https://github.com/HeatherLead/apple",
+        isGame: false,
     },
     {
         title:"Weather Map",
@@ -40,6 +44,7 @@ export const gamesData = [
         techStack:["React js","Css","Javascript" ,"api"],
         previewLink:"https://prodigy-wd-04-ten.vercel.app/",
         githubLink:"https://github.com/HeatherLead/prodigy-wd-04",
+        isGame: false,
     },
     {
         title:"Isro",
@@ -48,6 +53,7 @@ export const gamesData = [
         techStack:["React js","Css","Javascript" ,"Gsap"],
         previewLink:"https://tech-ten-rho.vercel.app/",
         githubLink:"https://github.com/HeatherLead/tech",
+        isGame: false,
     },
     {
         title:"Drum kit",
@@ -56,6 +62,7 @@ export const gamesData = [
         techStack:["Html","Css","Javascript"],
         previewLink:"https://drum-kit-one-lovat.vercel.app/",
         githubLink:"https://github.com/HeatherLead/drum-kit",
+        isGame: true,
     },
     
 ]
