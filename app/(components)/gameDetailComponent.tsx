@@ -20,7 +20,7 @@ type gameDetail = {
   techStack: string[];
   previewLink: string;
   githubLink: string;
-  isGame: boolean;
+  isGame?: boolean;
 };
 
 interface GameDetailComponentProps {

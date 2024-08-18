@@ -5,7 +5,6 @@ import useDragger from "@/hooks/useDragger";
 import { Screen } from "./mail";
 import { Space_Mono } from "next/font/google";
 import useExpand from "@/hooks/useExpand";
-import Isro from "./projectPages/isro";
 import { gamesData } from "@/data/data";
 import GameDetailComponent from "./gameDetailComponent";
 const space_mono = Space_Mono({
@@ -123,7 +122,7 @@ const Games = ({ handleIconClick }: GamesProps) => {
 
           <div
             ref={newComponentRef}
-            className={`absolute top-14 left-0 w-full h-full bg-white overflow-hidden ${
+            className={` z-40 absolute top-14 left-0 w-full h-full bg-white overflow-hidden ${
               expanded !== null ? "grid" : "hidden"
             }`}
           >
