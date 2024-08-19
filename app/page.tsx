@@ -9,7 +9,7 @@ import Mail from "./(components)/mail";
 import pdf from "./assets/pdf.svg";
 import Image from "next/image";
 import CvViewer from "./(components)/cvViewer";
-import ZIndexDemo from "./(components)/test";
+import useExpand from "@/hooks/useExpand";
 enum State {
   About,
   Contact,
@@ -23,6 +23,26 @@ export default function Page() {
   const [activeStates, setActiveStates] = useState<State[]>([]);
   const [zIndices, setZIndices] = useState<{ [key in State]?: number }>({});
   const t1Ref = useRef<GSAPTimeline | null>(null);
+  const [gamesNumber, setGamesNumber] = useState(0);
+  const [projectNumber, setProjectNumber] = useState(0);
+  const handleGamesClick = (value: number) => {
+    setGamesNumber(value);
+  };
+  const handleProjectClick = (value: number) => {
+    setProjectNumber(value);
+  };
+  const {
+    expanded: expandedProjects,
+    handleExpand: handleExpandProjects,
+    containerRef: projectsContainerRef,
+    newComponentRef: projectsNewComponentRef,
+  } = useExpand(projectNumber);
+  const {
+    expanded: expandedGames,
+    handleExpand: handleExpandGames,
+    containerRef: gamesContainerRef,
+    newComponentRef: gamesNewComponentRef,
+  } = useExpand(gamesNumber);
 
   const closeWindow = (state: State) => {
     if (t1Ref.current) {
@@ -76,6 +96,13 @@ export default function Page() {
             zIndex={zIndices[state] || 1}
             updateZIndex={updateZIndex}
             handleIconClick={handleIconClick}
+            expandedProps={{
+              containerRef: projectsContainerRef,
+              expanded: expandedProjects,
+              handleExpand: handleExpandProjects,
+              newComponentRef: projectsNewComponentRef,
+            }}
+            handleProjectClick={handleProjectClick}
             key={state}
           />
         );
@@ -94,6 +121,13 @@ export default function Page() {
             zIndex={zIndices[state] || 1}
             updateZIndex={updateZIndex}
             handleIconClick={handleIconClick}
+            expandedProps={{
+              containerRef: gamesContainerRef,
+              expanded: expandedGames,
+              handleExpand: handleExpandGames,
+              newComponentRef: gamesNewComponentRef,
+            }}
+            handleGamesClick={handleGamesClick}
             key={state}
           />
         );

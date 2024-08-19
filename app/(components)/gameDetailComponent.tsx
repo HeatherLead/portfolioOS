@@ -33,7 +33,8 @@ const GameDetailComponent = ({
   data,
 }: GameDetailComponentProps) => {
   if (!data) return;
-  const { containerRef, expanded, handleExpand, newComponentRef } = useExpand();
+  const { containerRef, expanded, handleExpand, newComponentRef } =
+    useExpand(0);
   return (
     <ScrollArea ref={containerRef} className="w-full p-5 pb-20 bg-[#f7f7f7]">
       <div className=" w-full flex justify-between mb-2">
