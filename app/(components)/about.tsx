@@ -31,8 +31,14 @@ const space_mono = Space_Mono({
 });
 interface AboutProps {
   handleIconClick: (state: State) => void;
+  zIndex: number;
+  updateZIndex: (state: State) => void;
 }
-export default function About({ handleIconClick }: AboutProps) {
+export default function About({
+  handleIconClick,
+  updateZIndex,
+  zIndex,
+}: AboutProps) {
   const t1Ref = useRef<GSAPTimeline | null>(null);
   const [screenWidth, setScreenWidth] = useState(Screen.min);
 
@@ -55,7 +61,9 @@ export default function About({ handleIconClick }: AboutProps) {
     <div className="w-screen h-screen p-0 m-0 overflow-hidden  flex justify-center items-center">
       <div
         id="about"
-        className=" z-10 h-full w-full absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 rounded-xl text-white m-0"
+        style={{ zIndex: zIndex }}
+        onClick={() => updateZIndex(State.About)}
+        className=" h-full w-full absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 rounded-xl text-white m-0"
       >
         <div
           id="aboutBar"

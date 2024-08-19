@@ -9,6 +9,7 @@ import Mail from "./(components)/mail";
 import pdf from "./assets/pdf.svg";
 import Image from "next/image";
 import CvViewer from "./(components)/cvViewer";
+import ZIndexDemo from "./(components)/test";
 enum State {
   About,
   Contact,
@@ -20,6 +21,7 @@ enum State {
 
 export default function Page() {
   const [activeStates, setActiveStates] = useState<State[]>([]);
+  const [zIndices, setZIndices] = useState<{ [key in State]?: number }>({});
   const t1Ref = useRef<GSAPTimeline | null>(null);
 
   const closeWindow = (state: State) => {
@@ -38,21 +40,81 @@ export default function Page() {
         ? prevStates.filter((s) => s !== state)
         : [...prevStates, state]
     );
+    updateZIndex(state);
   };
+
+  const updateZIndex = (state: State) => {
+    const maxZIndex = Math.max(0, ...Object.values(zIndices));
+    const clickedZIndex = zIndices[state] || 0;
+
+    const newZIndices = { ...zIndices, [state]: maxZIndex + 1 };
+
+    Object.keys(zIndices).forEach((key) => {
+      const currentState = key as unknown as State;
+      if (zIndices[currentState]! > clickedZIndex) {
+        newZIndices[currentState] = zIndices[currentState]! - 1;
+      }
+    });
+
+    setZIndices(newZIndices);
+  };
+
   const renderComponent = (state: State) => {
     switch (state) {
       case State.About:
-        return <About handleIconClick={handleIconClick} key={state} />;
+        return (
+          <About
+            zIndex={zIndices[state] || 1}
+            updateZIndex={updateZIndex}
+            handleIconClick={handleIconClick}
+            key={state}
+          />
+        );
       case State.Projects:
-        return <Projects handleIconClick={handleIconClick} key={state} />;
+        return (
+          <Projects
+            zIndex={zIndices[state] || 1}
+            updateZIndex={updateZIndex}
+            handleIconClick={handleIconClick}
+            key={state}
+          />
+        );
       case State.Contact:
-        return <Contact handleIconClick={handleIconClick} key={state} />;
+        return (
+          <Contact
+            zIndex={zIndices[state] || 1}
+            updateZIndex={updateZIndex}
+            handleIconClick={handleIconClick}
+            key={state}
+          />
+        );
       case State.Games:
-        return <Games handleIconClick={handleIconClick} key={state} />;
+        return (
+          <Games
+            zIndex={zIndices[state] || 1}
+            updateZIndex={updateZIndex}
+            handleIconClick={handleIconClick}
+            key={state}
+          />
+        );
       case State.Mail:
-        return <Mail handleIconClick={handleIconClick} key={state} />;
+        return (
+          <Mail
+            zIndex={zIndices[state] || 1}
+            updateZIndex={updateZIndex}
+            handleIconClick={handleIconClick}
+            key={state}
+          />
+        );
       case State.Cv:
-        return <CvViewer handleIconClick={handleIconClick} key={state} />;
+        return (
+          <CvViewer
+            zIndex={zIndices[state] || 1}
+            updateZIndex={updateZIndex}
+            handleIconClick={handleIconClick}
+            key={state}
+          />
+        );
       default:
         return null;
     }

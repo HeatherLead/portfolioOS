@@ -24,8 +24,10 @@ enum State {
 }
 interface ContactProps {
   handleIconClick: (state: State) => void;
+  zIndex: number;
+  updateZIndex: (state: State) => void;
 }
-const Contact = ({ handleIconClick }: ContactProps) => {
+const Contact = ({ handleIconClick, updateZIndex, zIndex }: ContactProps) => {
   const t1Ref = useRef<GSAPTimeline | null>(null);
   const [screenWidth, setScreenWidth] = useState(Screen.min);
 
@@ -47,7 +49,9 @@ const Contact = ({ handleIconClick }: ContactProps) => {
     <div className=" w-screen h-screen p-0 m-0 overflow-hidden flex justify-center items-center">
       <div
         id="contact"
-        className=" z-20 w-[70%] h-[70%]  rounded-xl overflow-hidden absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 border border-white"
+        style={{ zIndex: zIndex }}
+        onClick={() => updateZIndex(State.Contact)}
+        className=" w-[70%] h-[70%]  rounded-xl overflow-hidden absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 border border-white"
       >
         <div
           id="contactBar"

@@ -37,9 +37,11 @@ type ImageProps = {
 
 interface ProjectsProps {
   handleIconClick: (state: State) => void;
+  zIndex: number;
+  updateZIndex: (state: State) => void;
 }
 
-const Projects = ({ handleIconClick }: ProjectsProps) => {
+const Projects = ({ handleIconClick, updateZIndex, zIndex }: ProjectsProps) => {
   const t1Ref = useRef<GSAPTimeline | null>(null);
   const [screenWidth, setScreenWidth] = useState(Screen.min);
 
@@ -112,7 +114,9 @@ const Projects = ({ handleIconClick }: ProjectsProps) => {
     <div className="w-screen h-screen overflow-hidden m-0 p-0 flex justify-center items-center">
       <div
         id="project"
-        className="z-20 border border-white rounded-xl w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{ zIndex: zIndex }}
+        onClick={() => updateZIndex(State.Projects)}
+        className=" border border-white rounded-xl w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div
           id="projectBar"

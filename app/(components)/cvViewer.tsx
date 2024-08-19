@@ -17,8 +17,10 @@ enum Screen {
 }
 interface CvViewerProps {
   handleIconClick: (state: State) => void;
+  zIndex: number;
+  updateZIndex: (state: State) => void;
 }
-const CvViewer = ({ handleIconClick }: CvViewerProps) => {
+const CvViewer = ({ handleIconClick, zIndex, updateZIndex }: CvViewerProps) => {
   const t1Ref = useRef<GSAPTimeline | null>(null);
   const [screenWidth, setScreenWidth] = useState(Screen.min);
 
@@ -41,6 +43,8 @@ const CvViewer = ({ handleIconClick }: CvViewerProps) => {
     <div className=" w-screen h-screen overflow-hidden m-0 p-0  flex justify-center items-end ">
       <div
         id="cv"
+        style={{ zIndex: zIndex }}
+        onClick={() => updateZIndex(State.Cv)}
         className="bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 z-40 rounded-xl border border-white  w-full h-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div
