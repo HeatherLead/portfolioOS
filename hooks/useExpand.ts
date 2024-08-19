@@ -1,19 +1,21 @@
-import { useState, useRef } from 'react';
+import { useState, useRef} from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-const useExpand = (componentId: number) => {
+const useExpand = () => {
   const [expanded, setExpanded] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const newComponentRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
-    if (expanded === componentId && newComponentRef.current) {
+    if (expanded !== null && newComponentRef.current) {
       const tl = gsap.timeline();
-      tl.set(newComponentRef.current, {
-        transformOrigin: 'bottom',
-      });
+
+      tl.set(newComponentRef.current,{
+        transformOrigin:"bottom"
+      })
+
       tl.fromTo(
         newComponentRef.current,
         {
@@ -29,10 +31,10 @@ const useExpand = (componentId: number) => {
       );
       timelineRef.current = tl;
     } 
-  }, [expanded, componentId]);
+  }, [expanded]);
 
   const handleExpand = (index: number | null) => {
-    if (expanded === componentId && timelineRef.current) {
+    if (timelineRef.current && expanded !== null) {
       timelineRef.current.reverse().then(() => setExpanded(index));
     } else {
       setExpanded(index);

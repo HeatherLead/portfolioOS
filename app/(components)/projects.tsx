@@ -1,14 +1,14 @@
 "use client";
-import React, { RefObject, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Space_Mono, Poppins } from "next/font/google";
 import { Screen } from "./mail";
 import { useBaseAnimations } from "@/hooks/useBaseAnimations";
 import useDragger from "@/hooks/useDragger";
 import Image from "next/image";
 import Sidebar from "./sidebar";
+import useExpand from "@/hooks/useExpand";
 import { projectData } from "@/data/data";
 import GameDetailComponent from "./gameDetailComponent";
-import exp from "constants";
 
 const space_mono = Space_Mono({
   weight: "400",
@@ -27,12 +27,6 @@ enum State {
   Projects,
   Cv,
 }
-type ExpandType = {
-  containerRef: RefObject<HTMLDivElement>;
-  expanded: number | null;
-  handleExpand: (index: number | null) => void;
-  newComponentRef: RefObject<HTMLDivElement>;
-};
 
 type ImageProps = {
   src: string;
@@ -43,19 +37,11 @@ type ImageProps = {
 
 interface ProjectsProps {
   handleIconClick: (state: State) => void;
-  handleProjectClick: (value: number) => void;
   zIndex: number;
   updateZIndex: (state: State) => void;
-  expandedProps: ExpandType;
 }
 
-const Projects = ({
-  handleIconClick,
-  updateZIndex,
-  zIndex,
-  expandedProps,
-  handleProjectClick,
-}: ProjectsProps) => {
+const Projects = ({ handleIconClick, updateZIndex, zIndex }: ProjectsProps) => {
   const t1Ref = useRef<GSAPTimeline | null>(null);
   const [screenWidth, setScreenWidth] = useState(Screen.min);
 
@@ -75,8 +61,7 @@ const Projects = ({
 
   useDragger("projectBar", "project");
 
-  const { containerRef, expanded, handleExpand, newComponentRef } =
-    expandedProps;
+  const { containerRef, expanded, handleExpand, newComponentRef } = useExpand();
 
   const images: ImageProps[] = [
     {
@@ -114,7 +99,6 @@ const Projects = ({
 
   const renderExpandedContent = () => {
     if (expanded !== null && expanded >= 0 && expanded < projectData.length) {
-      handleProjectClick(expanded);
       return (
         <GameDetailComponent
           handleParentExpand={handleExpand}
