@@ -15,12 +15,14 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
 
     useEffect(() => {
         containerRef.current = document.getElementById(id) as HTMLDivElement;
-        if (!containerRef.current) {
-            throw new Error("Element with given id doesn't exist");
+        if (containerRef.current) {
+          
+        } else {
+          console.error("Element with id", id, "not found");
         }
-    }, [id]);
+      }, [id]);
 
-    useGSAP(() => {
+    useEffect(() => {
         if (!containerRef.current) return;
         const t1 = gsap.timeline();
         
@@ -56,7 +58,7 @@ export const useBaseAnimations = ({ id, screenWidth, t1Ref }: UseBaseAnimationsP
         }
     }, [firstLoad, t1Ref]);
 
-    useGSAP(() => {
+    useEffect(() => {
         if (!containerRef.current) return;
 
         const t2 = gsap.timeline();

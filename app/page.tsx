@@ -10,6 +10,7 @@ import pdf from "./assets/pdf.svg";
 import Image from "next/image";
 import CvViewer from "./(components)/cvViewer";
 import ZIndexDemo from "./(components)/test";
+import Clock from "./(components)/test";
 enum State {
   About,
   Contact,

@@ -47,7 +47,7 @@ const Taskbar = ({ handleIconClick, activeStates }: TaskbarProps) => {
   };
 
   return (
-    <div className=" z-10 flex w-full justify-center gap-10 items-center p-2 fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30 border-gray-100">
+    <div className=" z-50 flex w-full justify-center gap-10 items-center p-2 fixed bottom-0 left-1/2 -translate-x-1/2 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-30 border-gray-100">
       <div>
         <TooltipProvider>
           <Tooltip>

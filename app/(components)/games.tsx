@@ -53,7 +53,7 @@ const Games = ({ handleIconClick, updateZIndex, zIndex }: GamesProps) => {
     { src: "/assets/headset.png", colSpan: 3, rowSpan: 2 },
     { src: "/assets/weather2.png", colSpan: 3, rowSpan: 3 },
     { src: "/assets/isro.png", colSpan: 4, rowSpan: 3 },
-    { src: "/assets/Drum-kit.png", colSpan: 3, rowSpan: 2 },
+    { src: "/assets/drumKit.png", colSpan: 3, rowSpan: 2 },
   ];
   const renderExpandedContent = () => {
     if (expanded !== null && expanded >= 0 && expanded < gamesData.length) {
